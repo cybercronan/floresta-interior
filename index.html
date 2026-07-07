@@ -1783,8 +1783,12 @@ async function doSignup(){
   if(!e||p.length<6){ctErr("Preencha o e-mail e uma senha de 6+ caracteres.");return}
   const {data,error}=await sb.auth.signUp({email:e,password:p,options:{data:{name:n}}});
   if(error){ctErr(traduzErr(error));return}
-  if(data.session)toast("Conta criada! Bem-vinda/o 🌿");
-  else{ctMode="login";renderConta();ctErr("Quase lá: confirme o link que enviamos ao seu e-mail e então entre.")}
+  if(data.session){toast("Conta criada! Bem-vinda/o 🌿");return}
+  // cadastro instantâneo: entra direto após criar a conta
+  const {error:e2}=await sb.auth.signInWithPassword({email:e,password:p});
+  if(!e2){toast("Conta criada! Bem-vinda/o 🌿");return}
+  // fallback (se algum dia a confirmação por e-mail voltar a ser exigida)
+  ctMode="login";renderConta();ctErr("Quase lá: confirme o link que enviamos ao seu e-mail e então entre.");
 }
 async function doLogin(){
   ctErr("");
