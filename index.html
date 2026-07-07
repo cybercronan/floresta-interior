@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Floresta Interior · Banhos de Floresta guiados — Mestra Natureza</title>
+<meta name="description" content="Banhos de floresta guiados, jornada de 21 dias de reconexão e diário da natureza. Baseado no Guia Prático para Banhos Florestais de Mestra Natureza.">
+<meta name="theme-color" content="#233715">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23233715'/%3E%3Cpath d='M32 50 C32 34 34 24 46 14 C46 30 42 42 32 50 Z' fill='%23DCBD57'/%3E%3Cpath d='M32 50 C32 38 30 30 18 22 C19 34 24 44 32 50 Z' fill='%23E8F8AF' opacity='.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFF9EE; --paper-2:#F7EFDC; --paper-3:#EFE5CC;
+  --ink:#1D0E03; --ink-60:rgba(29,14,3,.6); --ink-40:rgba(29,14,3,.4); --ink-15:rgba(29,14,3,.15); --ink-08:rgba(29,14,3,.08);
+  --moss:#3F7652; --pine:#233715; --deep:#122302; --night:#0C1802;
+  --gold:#A47F04; --gold-2:#DCBD57; --leaf:#E8F8AF;
+  --cream-80:rgba(255,249,238,.8); --cream-55:rgba(255,249,238,.55);
+  --serif:"Fraunces",Georgia,serif; --sans:"Karla",system-ui,sans-serif;
+  --r:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans); color:var(--ink); background:var(--night);
+  background-image:radial-gradient(120% 90% at 50% -10%, #2a4218 0%, var(--deep) 48%, var(--night) 100%);
+  min-height:100vh; display:flex; justify-content:center;
+}
+/* ambient fronds on wide screens */
+body::before,body::after{content:"";position:fixed;width:46vmin;height:46vmin;pointer-events:none;opacity:.16;z-index:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23DCBD57' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M100 190 C100 120 100 60 100 12'/%3E%3Cpath d='M100 170 C70 160 48 140 40 112 M100 170 C130 160 152 140 160 112'/%3E%3Cpath d='M100 140 C74 132 56 116 50 92 M100 140 C126 132 144 116 150 92'/%3E%3Cpath d='M100 110 C80 103 66 90 62 70 M100 110 C120 103 134 90 138 70'/%3E%3Cpath d='M100 80 C86 74 76 64 73 48 M100 80 C114 74 124 64 127 48'/%3E%3Cpath d='M100 52 C91 47 85 40 83 30 M100 52 C109 47 115 40 117 30'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;}
+body::before{left:-8vmin;bottom:-6vmin;transform:rotate(18deg)}
+body::after{right:-9vmin;top:-7vmin;transform:rotate(-155deg)}
+#app{
+  position:relative; z-index:2; width:100%; max-width:460px; min-height:100vh; min-height:100dvh;
+  background:linear-gradient(180deg,var(--paper) 0%, #FDF5E4 60%, var(--paper-2) 100%);
+  box-shadow:0 0 0 1px rgba(220,189,87,.25), 0 30px 80px rgba(0,0,0,.55);
+  display:flex; flex-direction:column;
+}
+@media(min-width:520px){ #app{margin:20px 0;border-radius:30px;min-height:calc(100vh - 40px);min-height:calc(100dvh - 40px);overflow:hidden} }
+/* paper grain */
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .24 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+main{flex:1;overflow-y:auto;padding:0 22px calc(96px + env(safe-area-inset-bottom));position:relative;z-index:2;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+
+/* ---------- header ---------- */
+header{position:relative;z-index:2;padding:calc(18px + env(safe-area-inset-top)) 22px 10px;display:flex;align-items:center;justify-content:space-between}
+.wordmark{display:flex;align-items:center;gap:10px}
+.wordmark svg{width:30px;height:30px;flex:none}
+.wordmark .t{font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:.01em}
+.wordmark .s{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:1px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:999px;padding:6px 12px 6px 9px;font-weight:700;font-size:13px}
+.streak svg{width:15px;height:15px}
+
+/* ---------- shared ---------- */
+.view{display:none;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.view.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kicker{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+h2{font-size:26px;letter-spacing:-.01em}
+h3{font-size:18px}
+.sec{margin-top:30px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.divider{display:flex;align-items:center;gap:12px;margin:28px 0 0;color:var(--ink-40)}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--ink-15)}
+.divider svg{width:16px;height:16px;opacity:.7}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--pine);color:var(--paper);border-radius:999px;padding:15px 26px;font-weight:700;font-size:15px;letter-spacing:.02em;box-shadow:0 10px 24px rgba(18,35,2,.35);transition:transform .18s ease, box-shadow .18s ease}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:linear-gradient(120deg,var(--gold) 0%, #C29A1B 100%);color:#1D0E03}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);box-shadow:none}
+.stag>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.stag>*:nth-child(1){animation-delay:.03s}.stag>*:nth-child(2){animation-delay:.1s}.stag>*:nth-child(3){animation-delay:.17s}
+.stag>*:nth-child(4){animation-delay:.24s}.stag>*:nth-child(5){animation-delay:.31s}.stag>*:nth-child(6){animation-delay:.38s}
+.stag>*:nth-child(7){animation-delay:.45s}.stag>*:nth-child(8){animation-delay:.52s}
+
+/* ---------- HOJE ---------- */
+.date{font-size:13px;color:var(--ink-60);margin-top:14px}
+.greet{font-size:34px;margin-top:2px}
+.hero{position:relative;margin-top:18px;border-radius:26px;overflow:hidden;background:
+  radial-gradient(140% 120% at 85% -20%, #3a5c22 0%, var(--pine) 45%, var(--deep) 100%);color:var(--paper);padding:24px 22px 22px;box-shadow:0 18px 40px rgba(18,35,2,.35)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.25;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23E8F8AF' stroke-width='1.1' stroke-linecap='round' opacity='.8'%3E%3Cpath d='M158 210 C158 150 162 110 196 70'/%3E%3Cpath d='M158 190 C138 182 124 168 119 148 M158 190 C178 182 192 168 197 148'/%3E%3Cpath d='M158 158 C142 151 131 139 128 122 M158 158 C174 151 185 139 188 122'/%3E%3Cpath d='M158 128 C146 122 138 112 136 98 M158 128 C170 122 178 112 180 98'/%3E%3C/g%3E%3C/svg%3E") no-repeat right -20px bottom -30px/240px;}
+.hero .tag{display:inline-flex;align-items:center;gap:7px;background:rgba(232,248,175,.14);border:1px solid rgba(232,248,175,.35);color:var(--leaf);border-radius:999px;padding:5px 12px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hero h2{color:var(--paper);font-size:27px;margin:14px 0 6px}
+.hero p{color:var(--cream-80);font-size:14.5px;line-height:1.55;max-width:34ch}
+.hero .meta{display:flex;gap:14px;margin:14px 0 18px;color:var(--gold-2);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.hero .btn{position:relative;z-index:2;background:var(--paper);color:var(--ink);box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tile{position:relative;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:16px;text-align:left;transition:transform .18s ease}
+.tile:active{transform:scale(.98)}
+.tile .ic{width:34px;height:34px;border-radius:12px;background:var(--pine);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.tile .ic svg{width:18px;height:18px;stroke:var(--leaf)}
+.tile b{font-family:var(--serif);font-weight:500;font-size:15.5px;display:block}
+.tile span{font-size:12px;color:var(--ink-60)}
+.quote{position:relative;margin-top:26px;padding:26px 22px 22px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:6px 26px 6px 26px}
+.quote::before{content:"";position:absolute;top:-13px;left:20px;width:26px;height:26px;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A47F04' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 21 C12 13 13 8 19 3 C19 11 17 17 12 21 Z'/%3E%3Cpath d='M12 21 C12 15 11 11 5 7 C5.5 13 8 18 12 21 Z'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid var(--ink-15);border-radius:50%}
+.quote p{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.5}
+.quote cite{display:block;margin-top:10px;font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.jstate{display:flex;align-items:center;gap:14px;margin-top:14px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:14px 16px}
+.jstate .num{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--moss);min-width:44px;text-align:center}
+.jstate .bar{height:5px;background:var(--ink-08);border-radius:99px;overflow:hidden;margin-top:7px}
+.jstate .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--moss),var(--gold-2));border-radius:99px;transition:width .6s ease}
+.jstate b{font-size:14px}.jstate span{font-size:12px;color:var(--ink-60)}
+.jstate .grow{flex:1}
+
+/* ---------- PRÁTICAS ---------- */
+.pcard{position:relative;display:flex;gap:16px;align-items:center;width:100%;text-align:left;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:16px;margin-bottom:12px;overflow:hidden;transition:transform .18s ease}
+.pcard:active{transform:scale(.985)}
+.pcard::after{content:"";position:absolute;right:-16px;bottom:-20px;width:110px;height:110px;opacity:.09;transform:rotate(14deg);pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D0E03'%3E%3Cpath d='M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z'/%3E%3Cpath d='M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z' opacity='.7'/%3E%3C/svg%3E") no-repeat center/contain}
+.pcard:nth-child(even)::after{transform:rotate(-24deg)}
+.pnum{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold);min-width:30px}
+.pcard .ic{width:46px;height:46px;flex:none;border-radius:16px;background:var(--pine);display:flex;align-items:center;justify-content:center}
+.pcard .ic svg{width:22px;height:22px;stroke:var(--leaf)}
+.pcard b{font-family:var(--serif);font-weight:500;font-size:16.5px;display:block}
+.pcard .sub{font-size:12.5px;color:var(--ink-60);line-height:1.4;margin-top:2px}
+.pcard .min{margin-left:auto;flex:none;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss);background:rgba(63,118,82,.12);padding:5px 10px;border-radius:99px}
+
+/* ---------- JORNADA ---------- */
+.week{margin-top:26px}
+.week-h{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.week-h .n{font-family:var(--serif);font-style:italic;font-size:38px;color:var(--gold);line-height:1}
+.week-h b{font-family:var(--serif);font-weight:500;font-size:17px}
+.week-h span{display:block;font-size:12px;color:var(--ink-60)}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{aspect-ratio:1;border-radius:14px;border:1px solid var(--ink-15);background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:700;font-size:14px;transition:transform .15s ease;position:relative}
+.day:active{transform:scale(.94)}
+.day small{font-size:8px;letter-spacing:.08em;color:var(--ink-40);font-weight:700}
+.day.done{background:var(--pine);border-color:var(--pine);color:var(--leaf)}
+.day.done small{color:rgba(232,248,175,.7)}
+.day.current{border:2px solid var(--gold);box-shadow:0 6px 16px rgba(164,127,4,.25);background:var(--paper)}
+.day.locked{opacity:.38}
+.day .tick{position:absolute;top:4px;right:5px;width:10px;height:10px}
+
+/* ---------- DIÁRIO ---------- */
+.moods{display:flex;gap:8px;margin:12px 0 4px}
+.mood{flex:1;background:var(--paper-2);border:1.5px solid var(--ink-15);border-radius:16px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;transition:all .18s ease}
+.mood svg{width:22px;height:22px}
+.mood span{font-size:9px;font-weight:700;letter-spacing:.04em;color:var(--ink-60);text-transform:uppercase}
+.mood.sel{background:var(--pine);border-color:var(--pine)}
+.mood.sel span{color:var(--leaf)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{border:1px solid var(--ink-15);background:var(--paper-2);border-radius:99px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink-60);transition:all .15s ease}
+.chip.sel{background:var(--gold-2);border-color:var(--gold);color:var(--ink)}
+textarea{width:100%;min-height:96px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:14px 16px;font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);resize:vertical;outline:none}
+textarea:focus{border-color:var(--moss)}
+textarea::placeholder{color:var(--ink-40);font-style:italic}
+.entry{background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.entry .eh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.entry .ed{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.entry p{font-family:var(--serif);font-size:15px;line-height:1.55}
+.entry .echips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.entry .echips i{font-style:normal;font-size:11px;background:rgba(63,118,82,.1);color:var(--moss);font-weight:700;border-radius:99px;padding:3px 9px}
+.entry .del{color:var(--ink-40);font-size:11px;font-weight:700;letter-spacing:.06em}
+.empty{padding:34px 20px;text-align:center;border:1.5px dashed var(--ink-15);border-radius:var(--r);color:var(--ink-60)}
+.empty svg{width:34px;height:34px;opacity:.5;margin-bottom:10px}
+.empty p{font-family:var(--serif);font-style:italic;font-size:15px}
+
+/* ---------- SABER ---------- */
+.acc{background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.acc>button{width:100%;display:flex;align-items:center;gap:14px;padding:17px 16px;text-align:left}
+.acc .ic{width:38px;height:38px;flex:none;border-radius:13px;background:rgba(63,118,82,.12);display:flex;align-items:center;justify-content:center}
+.acc .ic svg{width:19px;height:19px;stroke:var(--moss)}
+.acc b{font-family:var(--serif);font-weight:500;font-size:15.5px;flex:1}
+.acc .ar{transition:transform .25s ease;color:var(--ink-40)}
+.acc.open .ar{transform:rotate(180deg)}
+.acc .body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc.open .body{max-height:1200px}
+.acc .body-in{padding:0 18px 18px;font-size:14px;line-height:1.65;color:rgba(29,14,3,.82)}
+.acc .body-in p+p{margin-top:10px}
+.acc .body-in em{font-family:var(--serif);color:var(--pine)}
+.check{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--ink-08);font-size:14px}
+.check:last-child{border:none}
+.check .box{width:20px;height:20px;flex:none;border:1.5px solid var(--ink-40);border-radius:7px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.check.on .box{background:var(--moss);border-color:var(--moss)}
+.check.on{color:var(--ink-40);text-decoration:line-through}
+.check .box svg{width:11px;height:11px;opacity:0}
+.check.on .box svg{opacity:1}
+
+/* ---------- BANHO SOB MEDIDA ---------- */
+.tile-wide{display:flex;align-items:center;gap:14px;width:100%;text-align:left;margin-top:12px;background:linear-gradient(120deg,var(--pine) 0%,#2e4a1a 100%);border:1px solid var(--pine);border-radius:var(--r);padding:16px;color:var(--paper);box-shadow:0 10px 26px rgba(18,35,2,.28);transition:transform .18s ease}
+.tile-wide:active{transform:scale(.98)}
+.tile-wide .ic{width:40px;height:40px;border-radius:14px;background:rgba(232,248,175,.14);display:flex;align-items:center;justify-content:center;flex:none}
+.tile-wide .ic svg{width:20px;height:20px;stroke:var(--leaf)}
+.tile-wide b{font-family:var(--serif);font-weight:500;font-size:16px;display:block}
+.tile-wide span{font-size:12px;color:var(--cream-55)}
+.tile-wide .go{margin-left:auto;color:var(--gold-2);flex:none}
+.glabel{display:flex;align-items:center;gap:10px;margin:26px 0 12px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.glabel::after{content:"";flex:1;height:1px;background:var(--ink-15)}
+.rng-wrap{margin:18px 0 6px}
+.rng-val{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-bottom:2px}
+.rng-val b{font-family:var(--serif);font-size:46px;font-weight:400;color:var(--pine)}
+.rng-val span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60)}
+.rng-note{text-align:center;font-size:12px;font-weight:700;min-height:32px;margin-bottom:8px;line-height:1.4;padding:0 10px}
+.rng-note.ok{color:var(--moss)}
+.rng-note.low{color:#A3611C}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--moss),var(--gold-2));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--paper);border:3px solid var(--pine);box-shadow:0 4px 10px rgba(18,35,2,.3);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--paper);border:3px solid var(--pine);cursor:pointer}
+.rng-marks{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:var(--ink-40);margin-top:6px;letter-spacing:.04em}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.stg{display:flex;align-items:center;gap:9px;border:1.5px solid var(--ink-15);background:var(--paper-2);border-radius:14px;padding:11px 12px;font-size:13px;font-weight:700;color:var(--ink-60);transition:all .15s}
+.stg svg{width:17px;height:17px;stroke:currentColor;flex:none}
+.stg.sel{background:var(--pine);border-color:var(--pine);color:var(--leaf)}
+.bsum{margin-top:14px;background:rgba(63,118,82,.09);border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.55;color:var(--pine);font-weight:600}
+/* ---------- RADAR DA CONEXÃO ---------- */
+.radar-card{background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:18px 16px;margin-top:6px}
+.radar-svg{display:block;margin:8px auto 0;width:100%;max-width:310px}
+.radar-leg{display:flex;justify-content:center;gap:18px;font-size:11px;font-weight:700;color:var(--ink-60);margin-top:6px}
+.radar-leg i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.tipbox{margin-top:12px;border-left:3px solid var(--gold);background:rgba(220,189,87,.12);border-radius:0 14px 14px 0;padding:12px 14px;font-size:13px;line-height:1.55}
+.tipbox b{color:var(--gold);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;display:block;margin-bottom:4px}
+.eval-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--ink-08)}
+.eval-row:last-child{border:none}
+.eval-row .q{font-size:13px;line-height:1.35;flex:1}
+.eval-row .q b{font-size:13.5px;font-family:var(--serif);font-weight:600;display:block}
+.eval-row .q span{color:var(--ink-60);font-size:11px}
+.lvs{display:flex;gap:5px;flex:none}
+.lv{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink-15);background:var(--paper);display:flex;align-items:center;justify-content:center;padding:0;transition:all .12s}
+.lv svg{width:13px;height:13px}
+.lv svg path{fill:var(--ink-15)}
+.lv.on{background:var(--moss);border-color:var(--moss)}
+.lv.on svg path{fill:var(--leaf)}
+/* ---------- CONTADOR DE PÁSSAROS ---------- */
+.count-btn{margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(232,248,175,.1);border:1.5px solid rgba(232,248,175,.4);border-radius:26px;padding:14px 34px;color:var(--leaf);transition:transform .12s ease}
+.count-btn:active{transform:scale(.93)}
+.count-btn svg{width:22px;height:22px}
+.count-btn svg path{fill:var(--gold-2)}
+.count-btn b{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.1}
+.count-btn span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--cream-55)}
+/* ---------- SUAVIZAÇÃO (reveals & transições) ---------- */
+.modal-bg.show{display:flex;animation:fadebg .28s ease both}
+@keyframes fadebg{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+.stepin{animation:stepin .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes stepin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* ---------- NAV ---------- */
+nav{position:absolute;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:space-around;align-items:center;background:rgba(255,249,238,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--ink-15);padding:10px 8px calc(12px + env(safe-area-inset-bottom))}
+@media(min-width:520px){nav{position:absolute}}
+.nbtn{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-40);padding:4px 10px;border-radius:14px;transition:color .2s}
+.nbtn svg{width:21px;height:21px;stroke:currentColor}
+.nbtn.active{color:var(--pine)}
+.nbtn.active::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold)}
+
+/* ---------- PLAYER (floresta noturna) ---------- */
+.overlay{position:fixed;inset:0;z-index:50;display:none;align-items:stretch;justify-content:center}
+.overlay.show{display:flex}
+.player{position:relative;width:100%;max-width:460px;display:flex;flex-direction:column;color:var(--paper);overflow:hidden;
+  background:radial-gradient(130% 100% at 50% 0%, #24400f 0%, var(--deep) 52%, #060f01 100%)}
+@media(min-width:520px){.player{margin:20px 0;border-radius:30px}}
+.player .grain{opacity:.35}
+.pl-leaves{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.pl-leaves i{position:absolute;top:-8%;font-size:0;width:14px;height:14px;opacity:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DCBD57'%3E%3Cpath d='M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z'/%3E%3C/svg%3E") no-repeat center/contain;
+  animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-4vh) rotate(0deg);opacity:0}8%{opacity:.5}90%{opacity:.35}100%{transform:translateY(108vh) rotate(320deg);opacity:0}}
+.pl-top{display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top)) 20px 0;position:relative;z-index:3}
+.pl-x,.pl-mute{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,249,238,.25);display:flex;align-items:center;justify-content:center;color:var(--cream-80)}
+.pl-x svg,.pl-mute svg{width:17px;height:17px}
+.pl-title{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);font-weight:700;text-align:center}
+.pl-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 30px;position:relative;z-index:3}
+.ring-wrap{position:relative;width:190px;height:190px;margin-bottom:26px}
+.ring-wrap svg.ring{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,249,238,.14);stroke-width:2.5}
+.ring-fg{fill:none;stroke:var(--gold-2);stroke-width:2.5;stroke-linecap:round;transition:stroke-dashoffset .3s linear}
+.ring-center{position:absolute;inset:14px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%, rgba(232,248,175,.10), rgba(232,248,175,0) 70%)}
+.ring-center .tleft{font-family:var(--serif);font-size:38px;font-weight:300;letter-spacing:.02em}
+.ring-center .phase{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-top:4px;min-height:13px}
+.breath-circle{position:absolute;inset:22px;border-radius:50%;border:1.5px solid rgba(232,248,175,.4);background:radial-gradient(circle, rgba(232,248,175,.14) 0%, rgba(232,248,175,.02) 70%);transform:scale(.72)}
+.breathing .breath-circle{animation:box 16s ease-in-out infinite}
+@keyframes box{0%{transform:scale(.72)}25%{transform:scale(1)}50%{transform:scale(1)}75%{transform:scale(.72)}100%{transform:scale(.72)}}
+.pl-step{font-size:11px;letter-spacing:.3em;color:rgba(255,249,238,.5);font-weight:700;text-transform:uppercase}
+.pl-h{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;margin:10px 0 14px;max-width:22ch}
+.pl-d{font-size:15px;line-height:1.65;color:var(--cream-80);max-width:36ch;font-weight:400}
+.pl-d em{font-family:var(--serif);font-style:italic;color:var(--leaf)}
+.pl-bottom{display:flex;align-items:center;justify-content:center;gap:22px;padding:0 20px calc(26px + env(safe-area-inset-bottom));position:relative;z-index:3}
+.pl-skip{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,249,238,.25);display:flex;align-items:center;justify-content:center;color:var(--cream-80)}
+.pl-skip svg{width:19px;height:19px}
+.pl-play{width:72px;height:72px;border-radius:50%;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.pl-play svg{width:26px;height:26px}
+.pl-dots{position:relative;z-index:3;display:flex;gap:7px;justify-content:center;padding-bottom:16px}
+.pl-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,249,238,.25);transition:all .3s}
+.pl-dots i.on{background:var(--gold-2);width:18px;border-radius:99px}
+
+/* ---------- completion / modals ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(12,24,2,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:60;display:none;align-items:flex-end;justify-content:center}
+.modal-bg.show{display:flex}
+.modal{width:100%;max-width:460px;background:var(--paper);border-radius:28px 28px 0 0;padding:26px 22px calc(26px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;animation:slideup .45s cubic-bezier(.2,.8,.2,1) both;position:relative}
+@media(min-width:520px){.modal{border-radius:28px;margin-bottom:4vh}}
+@keyframes slideup{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+.modal .handle{width:44px;height:4px;border-radius:99px;background:var(--ink-15);margin:0 auto 18px}
+.modal h3{font-size:22px;margin-bottom:6px}
+.modal .sub{font-size:13.5px;color:var(--ink-60);line-height:1.5}
+input[type=text]{width:100%;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:14px;padding:13px 16px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);outline:none;margin-top:12px}
+input[type=text]:focus{border-color:var(--moss)}
+
+/* welcome */
+#welcome{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:radial-gradient(130% 100% at 50% 0%, #24400f 0%, var(--deep) 55%, #060f01 100%);color:var(--paper);text-align:center}
+#welcome.show{display:flex}
+#welcome .in{max-width:400px;padding:40px 30px;position:relative;z-index:2}
+#welcome .mark{width:64px;height:64px;margin:0 auto 22px;animation:rise 1s .1s both}
+#welcome h1{font-size:35px;font-weight:400;animation:rise 1s .25s both}
+#welcome .poem{font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.7;color:var(--cream-80);margin:22px 0 30px;animation:rise 1s .45s both}
+#welcome .poem cite{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);margin-top:12px;font-style:normal;font-weight:700}
+#welcome .btn{animation:rise 1s .65s both}
+#welcome .sub-brand{margin-top:26px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,249,238,.45);font-weight:700;animation:rise 1s .8s both}
+
+.foot{margin-top:34px;text-align:center;font-size:11px;color:var(--ink-40);line-height:1.7;padding-bottom:8px}
+.foot b{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:10px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001s !important;transition-duration:.001s !important}.reveal{opacity:1 !important;transform:none !important}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="grain"></div>
+
+  <header>
+    <div class="wordmark">
+      <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#233715"/><path d="M32 50 C32 34 34 24 46 14 C46 30 42 42 32 50 Z" fill="#DCBD57"/><path d="M32 50 C32 38 30 30 18 22 C19 34 24 44 32 50 Z" fill="#E8F8AF" opacity=".85"/></svg>
+      <div><span class="t">Floresta Interior</span><span class="s">Mestra Natureza</span></div>
+    </div>
+    <div class="streak" id="streak" title="Dias de conexão">
+      <svg viewBox="0 0 24 24" fill="#A47F04"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg>
+      <span id="streak-n">0</span>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HOJE ============ -->
+    <section class="view active" id="v-hoje">
+      <div class="stag">
+        <p class="date" id="date"></p>
+        <h1 class="greet" id="greet">Boa tarde</h1>
+
+        <div class="hero" id="hero">
+          <span class="tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="#E8F8AF"><circle cx="12" cy="12" r="5"/></svg> Convite de hoje</span>
+          <h2 id="hero-t"></h2>
+          <p id="hero-d"></p>
+          <div class="meta"><span id="hero-min"></span><span id="hero-sense"></span></div>
+          <button class="btn" id="hero-go">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5 L19 12 L7 19.5 Z"/></svg>
+            Iniciar banho guiado
+          </button>
+        </div>
+
+        <div class="duo">
+          <button class="tile" id="tile-breath">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+            <b>Respiração 4·4·4·4</b>
+            <span>Aterramento em 2 minutos</span>
+          </button>
+          <button class="tile" id="tile-diario">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 h11 a2 2 0 0 1 2 2 v14 H7 a2 2 0 0 1 -2 -2 Z"/><path d="M18 16 H7 a2 2 0 0 0 0 4"/><path d="M9 8 h6 M9 11.5 h4"/></svg></div>
+            <b>Registrar sensações</b>
+            <span>Diário da natureza</span>
+          </button>
+        </div>
+
+        <button class="tile-wide" id="tile-build">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5 V12 l3 2"/></svg></span>
+          <span style="flex:1"><b>Banho sob medida</b><span>Escolha a duração — mínimo 10, ideal 25+ min</span></span>
+          <svg class="go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+
+        <div class="jstate" id="jstate">
+          <div class="num" id="j-num">1</div>
+          <div class="grow">
+            <b>Jornada de 21 dias</b>
+            <span id="j-label"> · Despertar dos Sentidos</span>
+            <div class="bar"><i id="j-bar" style="width:0%"></i></div>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D0E03" stroke-width="2" stroke-linecap="round" opacity=".4"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+
+        <div class="quote">
+          <p id="quote-t"></p>
+          <cite id="quote-a"></cite>
+        </div>
+
+        <div class="foot">
+          <b>Instituto Mestra Natureza</b><br>
+          Baseado no <em>Guia Prático para Banhos Florestais</em><br>
+          Ecopsicologia · Ecofilosofia · Saberes da Natureza
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRÁTICAS ============ -->
+    <section class="view" id="v-praticas">
+      <div class="sec">
+        <p class="kicker">Banhos guiados</p>
+        <h2>Práticas para<br>se banhar de floresta</h2>
+        <p class="sub" style="margin-top:8px;font-size:13.5px;color:var(--ink-60);line-height:1.55">Leve o app ao parque, à praça, ao quintal. Fones opcionais — a trilha sonora é a própria floresta.</p>
+      </div>
+      <div class="divider"><svg viewBox="0 0 24 24" fill="#A47F04"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg></div>
+      <div class="sec" id="plist"></div>
+    </section>
+
+    <!-- ============ JORNADA ============ -->
+    <section class="view" id="v-jornada">
+      <div class="sec">
+        <p class="kicker">21 dias de reconexão</p>
+        <h2>Uma floresta se planta<br>um dia de cada vez</h2>
+        <p style="margin-top:8px;font-size:13.5px;color:var(--ink-60);line-height:1.55">Micro-práticas diárias de 5 a 15 minutos, para fazer num parque, numa praça arborizada ou à janela.</p>
+      </div>
+      <div id="weeks"></div>
+      <div class="foot">Complete um dia para revelar o seguinte.<br>A pressa é o oposto da floresta.</div>
+    </section>
+
+    <!-- ============ DIÁRIO ============ -->
+    <section class="view" id="v-diario">
+      <div class="sec">
+        <p class="kicker">Diário da natureza</p>
+        <h2>O vocabulário<br>das suas sensações</h2>
+      </div>
+      <div class="sec" style="margin-top:18px">
+        <div class="radar-card">
+          <p class="kicker">Radar da conexão</p>
+          <h3 style="font-size:17px">Seu encontro em seis eixos</h3>
+          <div id="radar-holder"></div>
+          <div id="radar-tips"></div>
+          <button class="btn ghost" style="width:100%;margin-top:14px;padding:12px;font-size:13.5px" id="eval-open">Avaliar um encontro com a natureza</button>
+        </div>
+      </div>
+      <div class="sec" style="margin-top:24px">
+        <h3 style="font-size:15px">Como você chega agora?</h3>
+        <div class="moods" id="moods"></div>
+        <h3 style="font-size:15px;margin-top:18px">O que a floresta trouxe?</h3>
+        <div class="chips" id="chips"></div>
+        <textarea id="j-text" placeholder="Hoje ouvi dois bem-te-vis cantando no parque e isso me trouxe paz…"></textarea>
+        <button class="btn gold" style="width:100%;margin-top:14px" id="j-save">Guardar no diário</button>
+      </div>
+      <div class="divider"><svg viewBox="0 0 24 24" fill="#A47F04"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg></div>
+      <div class="sec" id="entries"></div>
+    </section>
+
+    <!-- ============ SABER ============ -->
+    <section class="view" id="v-saber">
+      <div class="sec">
+        <p class="kicker">Ciência & saberes</p>
+        <h2>Por que a floresta<br>faz bem</h2>
+        <p style="margin-top:8px;font-size:13.5px;color:var(--ink-60);line-height:1.55">O que a pesquisa científica — e a escuta atenta — revelam sobre os banhos de floresta.</p>
+      </div>
+      <div class="sec" id="saber"></div>
+    </section>
+
+  </main>
+
+  <nav>
+    <button class="nbtn active" data-v="hoje">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 v-6"/><path d="M12 15 C12 10 9 8 4.5 7.5 C5 12 8 15 12 15 Z"/><path d="M12 13 C12 8.5 15 6.5 19.5 6 C19 10.5 16 13 12 13 Z"/></svg>
+      Hoje</button>
+    <button class="nbtn" data-v="praticas">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z"/></svg>
+      Práticas</button>
+    <button class="nbtn" data-v="jornada">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21 C5 15 9 13 12 10 C15 7 15 4 13 3"/><circle cx="5" cy="21" r="1.4"/><circle cx="13" cy="3" r="1.4"/><path d="M9 14.5 l-2.5 -1 M13 10.5 l2.5 1"/></svg>
+      Jornada</button>
+    <button class="nbtn" data-v="diario">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 h11 a2 2 0 0 1 2 2 v14 H7 a2 2 0 0 1 -2 -2 Z"/><path d="M18 16 H7 a2 2 0 0 0 0 4"/><path d="M9 8 h6 M9 11.5 h4"/></svg>
+      Diário</button>
+    <button class="nbtn" data-v="saber">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 C8 6 6.5 9 6.5 12 A5.5 5.5 0 0 0 17.5 12 C17.5 9 16 6 12 3 Z"/><path d="M12 21 v-6"/></svg>
+      Saber</button>
+  </nav>
+</div>
+
+<!-- ============ PLAYER ============ -->
+<div class="overlay" id="player-ov">
+  <div class="player">
+    <div class="grain"></div>
+    <div class="pl-leaves" id="pl-leaves"></div>
+    <div class="pl-top">
+      <button class="pl-x" id="pl-close" aria-label="Encerrar prática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></button>
+      <div class="pl-title" id="pl-name">Prática</div>
+      <button class="pl-mute" id="pl-mute" aria-label="Som"><svg id="ic-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/><path d="M16.5 8.5 a5 5 0 0 1 0 7"/></svg></button>
+    </div>
+    <div class="pl-mid">
+      <div class="ring-wrap" id="ring-wrap">
+        <div class="breath-circle" id="breath-circle"></div>
+        <svg class="ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="0"/>
+        </svg>
+        <div class="ring-center">
+          <div class="tleft" id="pl-time">0:00</div>
+          <div class="phase" id="pl-phase"></div>
+        </div>
+      </div>
+      <div class="pl-step" id="pl-step">Passo 1 · 5</div>
+      <h2 class="pl-h" id="pl-h"></h2>
+      <p class="pl-d" id="pl-d"></p>
+      <button id="pl-count" class="count-btn" style="display:none" aria-label="Marcar mais uma voz de pássaro">
+        <svg viewBox="0 0 24 24"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".6"/></svg>
+        <b id="pl-count-n">0</b>
+        <span>vozes · toque a cada nova</span>
+      </button>
+    </div>
+    <div class="pl-bottom">
+      <button class="pl-skip" id="pl-prev" aria-label="Passo anterior"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 5 L8 12 L17 19 Z"/><rect x="6" y="5" width="2" height="14" rx="1"/></svg></button>
+      <button class="pl-play" id="pl-play" aria-label="Pausar"><svg id="ic-pp" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.4"/><rect x="13.5" y="5" width="4" height="14" rx="1.4"/></svg></button>
+      <button class="pl-skip" id="pl-next" aria-label="Próximo passo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5 L16 12 L7 19 Z"/><rect x="16" y="5" width="2" height="14" rx="1"/></svg></button>
+    </div>
+    <div class="pl-dots" id="pl-dots"></div>
+  </div>
+</div>
+
+<!-- ============ COMPLETION ============ -->
+<div class="modal-bg" id="done-ov">
+  <div class="modal">
+    <div class="handle"></div>
+    <div style="text-align:center;margin-bottom:16px">
+      <svg width="46" height="46" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="rgba(63,118,82,.12)"/><path d="M32 48 C32 34 34 26 45 17 C45 31 41 41 32 48 Z" fill="#3F7652"/><path d="M32 48 C32 38 30 32 20 25 C21 35 25 43 32 48 Z" fill="#A47F04" opacity=".8"/></svg>
+      <h3 style="margin-top:10px">A floresta agradece</h3>
+      <p class="sub" id="done-sub">Prática concluída. Antes de partir, o círculo de gratidão: <em>uma palavra</em> pelo que você recebeu.</p>
+    </div>
+    <input type="text" id="grat" maxlength="60" placeholder="calma · aprendizado · beleza…">
+    <h3 style="font-size:14px;margin:18px 0 4px">Como você se sente agora?</h3>
+    <div class="moods" id="done-moods"></div>
+    <button class="btn" style="width:100%;margin-top:18px" id="done-save">Selar a experiência</button>
+    <button style="width:100%;margin-top:10px;padding:12px;color:var(--ink-40);font-weight:700;font-size:12.5px" id="done-skip">Encerrar sem registrar</button>
+  </div>
+</div>
+
+<!-- ============ JOURNEY DAY ============ -->
+<div class="modal-bg" id="day-ov">
+  <div class="modal" id="day-modal"></div>
+</div>
+
+<!-- ============ BANHO SOB MEDIDA ============ -->
+<div class="modal-bg" id="build-ov">
+  <div class="modal">
+    <div class="handle"></div>
+    <p class="kicker">Banho sob medida</p>
+    <h3>Quanto tempo você tem<br>para a floresta hoje?</h3>
+    <div class="rng-wrap">
+      <div class="rng-val"><b id="b-min">25</b><span>minutos</span></div>
+      <div class="rng-note" id="b-note"></div>
+      <input type="range" id="b-rng" min="10" max="90" step="5" value="25" aria-label="Duração do banho em minutos">
+      <div class="rng-marks"><span>10</span><span>25 ★</span><span>45</span><span>65</span><span>90</span></div>
+    </div>
+    <h3 style="font-size:14px;margin-top:14px">Quais sentidos despertar?</h3>
+    <div class="sgrid" id="b-senses"></div>
+    <div class="bsum" id="b-sum"></div>
+    <button class="btn gold" style="width:100%;margin-top:16px" id="b-start">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5 L19 12 L7 19.5 Z"/></svg>
+      Começar meu banho
+    </button>
+    <button style="width:100%;margin-top:10px;padding:12px;color:var(--ink-40);font-weight:700;font-size:12.5px" id="b-close">Fechar</button>
+  </div>
+</div>
+
+<!-- ============ AVALIAÇÃO / RADAR ============ -->
+<div class="modal-bg" id="eval-ov">
+  <div class="modal">
+    <div class="handle"></div>
+    <p class="kicker">Radar da conexão</p>
+    <h3>Como foi seu encontro?</h3>
+    <p class="sub" style="margin-top:6px">Avalie cada eixo com sinceridade — o radar mostra onde o seu próximo banho pode ir mais fundo.</p>
+    <div id="eval-rows" style="margin-top:8px"></div>
+    <button class="btn" style="width:100%;margin-top:16px" id="eval-save">Guardar no radar</button>
+    <button style="width:100%;margin-top:10px;padding:12px;color:var(--ink-40);font-weight:700;font-size:12.5px" id="eval-skip">Agora não</button>
+  </div>
+</div>
+
+<!-- ============ WELCOME ============ -->
+<div id="welcome">
+  <div class="grain"></div>
+  <div class="in">
+    <svg class="mark" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="rgba(232,248,175,.08)" stroke="rgba(220,189,87,.4)"/><path d="M32 50 C32 34 34 24 46 14 C46 30 42 42 32 50 Z" fill="#DCBD57"/><path d="M32 50 C32 38 30 30 18 22 C19 34 24 44 32 50 Z" fill="#E8F8AF" opacity=".85"/></svg>
+    <h1>Floresta<br>Interior</h1>
+    <div class="poem">
+      «Sinto-me nascido a cada momento<br>para a eterna novidade do Mundo…»
+      <cite>Alberto Caeiro</cite>
+    </div>
+    <button class="btn gold" id="enter">Entrar na floresta</button>
+    <div class="sub-brand">Banhos de floresta guiados · Mestra Natureza</div>
+  </div>
+</div>
+
+<script>
+/* ================= DADOS — do Guia Prático para Banhos Florestais ================= */
+const QUOTES=[
+ ["Respirar é inalar um presente que nos foi dado pelas plantas.","Guia Prático · Mestra Natureza"],
+ ["Aqui, agora, você também é floresta. Você é a erva rasteira e a árvore frondosa, o riacho, a terra, a raiz — e as conexões entre cada parte.","Guia Prático · Mestra Natureza"],
+ ["Quem pratica um banho de floresta entrega-se à floresta como quem submerge em água.","Guia Prático · Mestra Natureza"],
+ ["Não há corte seco entre corpo e paisagem, entre corpo e natureza.","Guia Prático · Mestra Natureza"],
+ ["O que chamamos de silêncio é cheio de pequenos ruídos que usualmente ignoramos.","John Cage, citado no Guia"],
+ ["Trate a paisagem conhecida como se fosse ainda desconhecida: busque perceber sempre algo novo.","Guia Prático · Mestra Natureza"],
+ ["Sinto-me nascido a cada momento para a eterna novidade do Mundo.","Alberto Caeiro"],
+ ["Peça licença. Respeite as vidas que ali habitam.","Guia Prático · Mestra Natureza"]];
+
+const SENSES={visao:"Visão",audicao:"Audição",olfato:"Olfato",tato:"Tato",corpo:"Corpo inteiro",alma:"Encerramento"};
+
+const ICONS={
+ limiar:'<path d="M12 21 v-8 M12 13 C12 8.5 9.5 6.5 5 6 C5.5 10.5 8 13 12 13 Z M12 11 C12 7.5 14 5.5 18.5 5 C18 9 15.5 11 12 11 Z"/>',
+ visao:'<path d="M2.5 12 C5 7.5 8.3 5.2 12 5.2 C15.7 5.2 19 7.5 21.5 12 C19 16.5 15.7 18.8 12 18.8 C8.3 18.8 5 16.5 2.5 12 Z"/><circle cx="12" cy="12" r="3"/>',
+ audicao:'<path d="M8 20 a3 3 0 0 0 5 -1 C13.5 17.5 15 16.5 16 15 A7 7 0 1 0 5 9"/><path d="M9.5 9.5 A3.5 3.5 0 0 1 15 12"/>',
+ olfato:'<path d="M7 20 C10 18 11 15.5 11 12.5 C11 9 9 7.5 9 5 C9 4 9.5 3.3 10 3"/><path d="M12.5 20.5 C15.5 18.5 17 15.5 17 12 C17 8.5 15 7 15 4.5"/>',
+ tato:'<path d="M7 11.5 V6.8 a1.5 1.5 0 0 1 3 0 V11 M10 10.5 V5 a1.5 1.5 0 0 1 3 0 v5.5 M13 10.7 V6.2 a1.5 1.5 0 0 1 3 0 V12 M16 11.5 a1.5 1.5 0 0 1 3 1 c-.4 2.5 -.8 4.5 -2 6.3 A6.5 6.5 0 0 1 11.5 21.7 C8.5 21.7 7 20.2 5.5 17.2 L3.8 13.8 a1.4 1.4 0 0 1 2.4 -1.4 L7 13.8"/>',
+ arvore:'<path d="M12 21 v-5 M12 16 C8 16 5.5 13.5 5.5 10 C5.5 6.5 8.4 4 12 4 C15.6 4 18.5 6.5 18.5 10 C18.5 13.5 16 16 12 16 Z"/><path d="M12 16 l-3 -3 M12 13 l2.5 -2.5"/>',
+ gratidao:'<path d="M12 20.5 C7 17 3.5 13.8 3.5 9.8 A4.5 4.5 0 0 1 12 7.5 A4.5 4.5 0 0 1 20.5 9.8 C20.5 13.8 17 17 12 20.5 Z"/>',
+ ciencia:'<path d="M9.5 3 v6 L4.5 18 a2 2 0 0 0 1.8 3 h11.4 a2 2 0 0 0 1.8 -3 L14.5 9 V3"/><path d="M8 3 h8 M7 15 h10"/>',
+ folha:'<path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z"/>',
+ alerta:'<path d="M12 3 L22 20 H2 Z"/><path d="M12 9.5 v4.5 M12 17.5 v.5"/>',
+ mochila:'<path d="M8 7 V5.5 A2.5 2.5 0 0 1 10.5 3 h3 A2.5 2.5 0 0 1 16 5.5 V7"/><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M5 13 h14 M9.5 13 v2.5 M14.5 13 v2.5"/>',
+ olho:'<path d="M2.5 12 C5 7.5 8.3 5.2 12 5.2 C15.7 5.2 19 7.5 21.5 12 C19 16.5 15.7 18.8 12 18.8 C8.3 18.8 5 16.5 2.5 12 Z"/><circle cx="12" cy="12" r="3"/>',
+ semente:'<path d="M5 19 C7 16.8 9.2 15.8 12 15.8 C14.8 15.8 17 16.8 19 19"/><path d="M12 15.5 V9.5"/><path d="M12 9.5 C12 6.6 10 4.9 7 4.6 C7.3 7.6 9.2 9.4 12 9.5 Z"/><path d="M12 9.5 C12 7.2 13.6 5.7 16.5 5.3 C16.2 8 14.4 9.4 12 9.5 Z"/>',
+ coracao:'<path d="M12 20.5 C7 17 3.5 13.8 3.5 9.8 A4.5 4.5 0 0 1 12 7.5 A4.5 4.5 0 0 1 20.5 9.8 C20.5 13.8 17 17 12 20.5 Z"/><path d="M7.5 12 h2.4 l1.1 -2.2 1.7 4.4 1.1 -2.2 h2.7"/>',
+ som:'<path d="M4 11 v2 M8 8.5 v7 M12 5.5 v13 M16 8.5 v7 M20 11 v2"/>',
+ relogio:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5 V12 l3 2"/>',
+ passaro:'<path d="M6 19 C6 13.2 9 9.8 13.6 9.8 C15.6 9.8 17.1 10.7 17.7 12.2 L21 12.7 L18.3 14.3 C17.6 17.6 15 19 11.2 19 Z"/><circle cx="15.6" cy="11.9" r=".4"/><path d="M4 8.5 C5.4 8.9 6.4 9.8 6.9 11.2 M6.3 5.6 C8.2 6.3 9.6 7.8 10.1 9.7"/>'};
+
+/* Práticas guiadas — textos adaptados do Guia (cap. 8, sentidos e roteiro da vivência) */
+const PRACTICES=[
+ {id:"limiar",icon:"limiar",title:"Travessia do Limiar",sub:"A chegada: deixar a cidade do lado de fora",sense:"corpo",min:6,steps:[
+  {t:"Desligue o mundo de lá",s:60,d:"Coloque o celular em modo avião — ele volta a existir depois. Chegue devagar ao seu lugar. <em>Peça licença, em pensamento, às vidas que ali habitam.</em>"},
+  {t:"Pés na terra",s:90,d:"De pé, sinta os pés tocando o chão: a firmeza da terra, as folhas sob o calçado. O corpo chegou. Deixe a mente chegar também."},
+  {t:"Respiração da floresta",s:96,breath:true,d:"Inspire em 4 tempos… segure por 4… expire em 4… permaneça vazia/o por 4. Siga o círculo. <em>Respirar é inalar um presente que nos foi dado pelas plantas.</em>"},
+  {t:"Primeira escuta",s:120,d:"De olhos fechados, apenas escute. Quais sons a paisagem traz até você? Perceba as camadas: vento, folhas, pássaros, água… e o silêncio entre elas."},
+  {t:"Cumprimente a floresta",s:60,d:"Abra os olhos lentamente. Cumprimente em silêncio este lugar, como quem chega à casa de alguém querido. A travessia está feita: você entrou."}]},
+ {id:"visao",icon:"visao",title:"O Olhar do Girassol",sub:"Ver como quem vê pela primeira vez",sense:"visao",min:8,steps:[
+  {t:"O pasmo essencial",s:60,d:"«O meu olhar é nítido como um girassol…» Entre nesta prática com o olhar renovado de uma criança, livre de pré-concepções. Tudo aqui é novo."},
+  {t:"O longe",s:90,d:"Deixe os olhos vagarem pela paisagem ao longe: o conjunto das árvores, a linha do horizonte, o céu entre as copas. Olhos que viveram de telas agora se alongam."},
+  {t:"A média distância",s:90,d:"Traga o olhar para mais perto: arbustos, troncos individuais, o jogo de luz e sombra que o sol desenha no chão ao atravessar as copas."},
+  {t:"O minúsculo",s:120,d:"Agora, bem de perto: musgos, brotos, a nervura de uma folha, um inseto em travessia. <em>Quantos tons de verde diferentes você consegue distinguir?</em>"},
+  {t:"Deixe-se convidar",s:120,d:"Caminhe sem objetivo, permitindo que as formas e cores convidem seus olhos. Não há certo ou errado: cada olhar é atraído pelo que precisa ver."}]},
+ {id:"audicao",icon:"audicao",title:"Sinfonia Sutil",sub:"A orquestra completa da floresta",sense:"audicao",min:8,steps:[
+  {t:"Fechar os olhos",s:60,d:"Pare. Feche os olhos. Quando nos privamos da visão, a audição se aguça. Deixe os ouvidos assumirem a frente."},
+  {t:"Contar as camadas",s:150,d:"Quantos sons diferentes você escuta agora? Cantos distintos de pássaros, vento nas folhas, água, insetos… Não conte números: refine a escuta para notar nuances."},
+  {t:"O som mais distante",s:90,d:"Estique a escuta até o som mais longínquo que conseguir alcançar. Depois volte ao mais próximo: talvez a sua própria respiração."},
+  {t:"O silêncio entre os sons",s:120,d:"Perceba as pausas. <em>O silêncio absoluto não existe: ele é cheio de pequenos ruídos que usualmente ignoramos.</em> Na floresta, até o intervalo faz parte da música."},
+  {t:"Respirar com a paisagem",s:90,d:"Inspire profundamente numa pausa silenciosa e, ao expirar, imagine seu sopro se misturando ao vento e às vozes dos animais. Você faz parte da sinfonia."}]},
+ {id:"olfato",icon:"olfato",title:"Banho Molecular",sub:"O ar da floresta agindo por dentro",sense:"olfato",min:7,steps:[
+  {t:"A atmosfera invisível",s:60,d:"O ar daqui não estagna: é um oceano de moléculas exaladas por folhas, cascas, solo e fungos. Ao respirar, você se banha nele — por dentro."},
+  {t:"Inspirações profundas",s:120,d:"Inspire lenta e profundamente pelo nariz. Que aroma predomina? Terra úmida? Madeira? Folhas secas? Um doce de flor distante? Nomeie sem pressa."},
+  {t:"Os cheiros sutis",s:120,d:"Aproxime o nariz da casca de uma árvore, de uma folha caída, do solo. Muitas plantas só revelam seu perfume de perto. <em>Não cheire o que não conhece — a floresta também se defende.</em>"},
+  {t:"Memória e emoção",s:90,d:"O olfato é o sentido que mais acessa memórias antigas. Algum cheiro daqui te levou a outro tempo, outro lugar? Deixe a lembrança visitar você."},
+  {t:"O presente das plantas",s:60,d:"Uma última inspiração, com gratidão: os compostos que você respira agora seguirão agindo em você por horas. <em>Respirar é inalar um presente que nos foi dado pelas plantas.</em>"}]},
+ {id:"tato",icon:"tato",title:"A Pele da Terra",sub:"Tocar e ser tocada/o pelo mundo",sense:"tato",min:8,steps:[
+  {t:"Mãos despertas",s:60,d:"Esfregue as palmas das mãos até aquecê-las. Elas serão seus olhos agora. Escolha um canto seguro, com texturas variadas por perto."},
+  {t:"A casca centenária",s:120,d:"Pouse a palma da mão no tronco de uma árvore. Sinta os sulcos, a espessura, a temperatura — diferente da do ar. Há quanto tempo este ser está aqui, firme?"},
+  {t:"Folha seca, folha viva",s:120,d:"Recolha uma folha caída: sinta-a esfarelar, ouça seu crepitar. Depois toque, com delicadeza, uma folha ainda verde. Que diferença os dedos percebem entre o que foi e o que é?"},
+  {t:"Aterrar",s:120,d:"Se o lugar permitir, toque o solo com as mãos — ou descalce os pés num trecho seguro. Grama, terra, areia: as plantas dos pés acordam. <em>Criar raízes é também um gesto do corpo.</em>"},
+  {t:"Matéria compartilhada",s:60,d:"Somos feitos do mesmo carbono, da mesma água que tudo aqui. Ao tocar a floresta, você toca a matéria da qual também é feita/o. Agradeça com um último toque suave."}]},
+ {id:"arvore",icon:"arvore",title:"Tornar-se Floresta",sub:"Meditação da árvore — a prática mais profunda",sense:"corpo",min:10,steps:[
+  {t:"Acomodar-se",s:90,d:"Encontre um lugar aprazível — a sombra de uma grande árvore é perfeito. Sente-se ou deite-se. Feche os olhos. Deixe o corpo pesar sobre a terra."},
+  {t:"Raízes",s:120,d:"Imagine raízes saindo das plantas dos seus pés, penetrando o solo, entrelaçando-se às raízes das árvores ao redor. Você está ancorada/o. Nada te falta aqui."},
+  {t:"Tronco e galhos",s:120,d:"Sinta o corpo firme como um tronco. Os braços tornam-se galhos; os cabelos, folhas farfalhando ao vento. Experimente a imobilidade viva de ser árvore."},
+  {t:"Copa e luz",s:120,d:"Suba mentalmente até a copa. Sinta a luz do sol alimentando cada folha. Depois desça até as profundezas, trocando nutrientes com o solo e com as outras vidas."},
+  {t:"Você também é floresta",s:120,d:"<em>Aqui, agora, você também é floresta. Você é a erva rasteira e a árvore frondosa, a lagarta e a mariposa, o riacho, a terra, a raiz — e as conexões entre cada parte.</em>"},
+  {t:"Retorno",s:90,d:"Volte devagar à sua forma humana, trazendo a sabedoria sentida nessa quietude. Mexa os dedos, espreguice, abra os olhos. A floresta continua em você."}]},
+ {id:"gratidao",icon:"gratidao",title:"Círculo de Gratidão",sub:"O encerramento que sela a experiência",sense:"alma",min:5,steps:[
+  {t:"Uma palavra",s:90,d:"Pense em <em>uma palavra</em> que resuma aquilo pelo qual você é grata/o neste momento — um sentimento, uma cena, um som. Diga-a em voz baixa, oferecendo-a ao lugar."},
+  {t:"Check-out ecológico",s:90,d:"Olhe ao redor antes de partir: nenhum vestígio seu fica para trás. Como um convidado educado, deixe a casa da floresta exatamente como estava — ou melhor."},
+  {t:"O compromisso",s:90,d:"De que forma esta experiência vai refletir no seu dia a dia? Escolha um gesto pequeno e possível: olhar as árvores da sua rua com outros olhos já é um começo."},
+  {t:"O gesto final",s:60,d:"Pouse as mãos no tronco de uma árvore em sinal de despedida — ou faça uma inspiração profunda, sincronizando-se uma última vez com os sons ao redor. O círculo se fecha."}]},
+ {id:"passaros",icon:"passaro",title:"Quantos Pássaros?",sub:"O jogo da escuta fina",sense:"audicao",min:5,steps:[
+  {t:"Prepare a escuta",s:45,d:"Encontre um lugar e fique confortável. Feche os olhos por alguns instantes e deixe os ouvidos irem à frente do corpo."},
+  {t:"Quantos pássaros cantam ao seu redor?",s:180,counter:true,d:"A cada <em>voz diferente</em> que perceber, toque na folha. Não é sobre contar — é sobre notar as nuances: o distante, o agudo, o intermitente, o que responde."},
+  {t:"A escuta que fica",s:45,d:"Abra os olhos devagar. As vozes continuam as mesmas — <em>você</em> é que agora as escuta. Essa atenção fina vai com você pelo resto do dia."}]}];
+
+/* Meditações da Mestra — das aulas do curso Banhos de Floresta (BFMN2025) */
+const MEDITS=[
+ {id:"semente",icon:"semente",title:"A Semente",sub:"Ser plantada/o, germinar, abrigar",sense:"corpo",min:10,steps:[
+  {t:"Repousar na terra",s:90,d:"Sente-se ou deite-se. Feche os olhos. Sinta o peso do corpo entregue ao chão — uma semente recém-plantada, guardada pela terra."},
+  {t:"Ser enterrada/o",s:120,d:"Permita-se ser enterrada/o. A escuridão da terra não é fim: é abrigo. Ao redor, umidade, minerais e vidas minúsculas preparam o seu despertar."},
+  {t:"Germinar",s:120,d:"Algo em você se rompe — e brota. Raízes descem à procura de água; um broto sobe à procura de luz. Sinta as duas direções ao mesmo tempo: profundidade e altura."},
+  {t:"Tornar-se árvore",s:150,d:"Cresça. Ganhe tronco, casca, copa. Você se alimenta da floresta e a alimenta em troca: agora você é <em>abrigo, alimento e medicina</em> para os seres ao redor."},
+  {t:"Conversar em aromas",s:120,d:"Comunique-se quimicamente: suas moléculas aromáticas tocam a pele, a íris, o sangue de outros seres. Imagine toda a troca que uma árvore faz, em silêncio, o dia inteiro."},
+  {t:"Voltar com raízes",s:90,d:"Retorne devagar à forma humana — mas traga as raízes com você. Abra os olhos: algo seu continua plantado aqui, crescendo."}]},
+ {id:"coracao",icon:"coracao",title:"O Coração da Terra",sub:"Pulsar no ritmo mais antigo",sense:"corpo",min:8,steps:[
+  {t:"Encontrar o pulso",s:90,d:"Sente-se confortavelmente. Pouse a mão sobre o peito e encontre o seu batimento. Ele é o tambor mais antigo que você conhece."},
+  {t:"O tambor sob o solo",s:120,d:"Imagine, sob a terra, um batimento profundo e lento — o coração da Mãe Terra. Os povos originários o imitam em tambores de mão: <em>tum… tum… tum…</em>"},
+  {t:"Sincronizar",s:128,breath:true,d:"Deixe a respiração acompanhar esse ritmo ancestral: inspire em quatro batidas, guarde, solte em quatro, descanse. Coração e terra no mesmo compasso."},
+  {t:"Um só ritmo",s:90,d:"Seu coração, o vento, a seiva subindo pelos troncos, o pulso do solo: perceba tudo batendo junto. Você não escuta a paisagem — você <em>pulsa</em> com ela."},
+  {t:"Guardar o tambor",s:60,d:"Guarde esse ritmo no peito. Nos dias acelerados, uma mão sobre o coração o traz de volta — a Terra continua batendo embaixo de qualquer calçada."}]},
+ {id:"sonssilencios",icon:"som",title:"Sons e Silêncios",sub:"A escuta que desce em camadas",sense:"audicao",min:9,steps:[
+  {t:"Os sons óbvios",s:120,d:"Feche os olhos. O que soa primeiro? Um riacho, um pássaro, folhas ao vento. Receba os sons evidentes, um por um, sem pressa de ir além."},
+  {t:"Os sons sutis",s:150,d:"Agora desça uma camada: o zumbido de um inseto, o estalar de um galho, passos mínimos sob as folhas secas — a floresta inteira trabalhando."},
+  {t:"Os silêncios",s:120,d:"Procure os «silêncios» entre os sons. O silêncio absoluto não existe — então repare: <em>como a floresta preenche esses espaços?</em>"},
+  {t:"O sopro na sinfonia",s:120,d:"Inspire em silêncio. Ao soltar o ar, imagine seu sopro se misturando aos sons ao redor. Você é mais um instrumento — e a música fica completa."}]},
+ {id:"memoria",icon:"olfato",title:"A Memória Perfumada",sub:"Gravar um portal de volta à calma",sense:"olfato",min:7,steps:[
+  {t:"Farejar a paisagem",s:120,d:"Caminhe devagar, rastreando cheiros: terra, casca, folhas, uma flor distante. Qual é o primeiro que você percebe? E o mais sutil, escondido?"},
+  {t:"Escolher seu aroma",s:120,d:"Eleja o cheiro que mais toca você. Aproxime-se dele. Inspire-o profundamente, três vezes, com atenção total — como quem aprende um nome."},
+  {t:"Gravar o portal",s:120,d:"O olfato é o sentido que mais grava memórias. Neste momento, você está criando um atalho de volta a este estado de calma. <em>Este cheiro agora é seu portal.</em>"},
+  {t:"Levar para a vida",s:60,d:"Nos dias difíceis, procure este aroma — um chá, uma folha esfregada nos dedos, a terra molhada de chuva. Uma inspiração, e a floresta volta inteira."}]}];
+const ALLP=[...PRACTICES,...MEDITS];
+
+/* Blocos sensoriais do Banho Sob Medida */
+const SENSE_BLOCKS={
+ visao:{n:"Visão",ic:"visao",t:"Convite dos olhos",d:"Deixe a atenção vagar pela paisagem antes de escolher. Aquilo que chama o seu olhar — uma casca, um pássaro, o conjunto — é um convite. <em>Ouça as vozes do lugar com os olhos:</em> do horizonte ao musgo, quantos tons de verde?"},
+ audicao:{n:"Audição",ic:"audicao",t:"A sinfonia em camadas",d:"Feche os olhos. Primeiro, os sons óbvios: água, pássaros, vento. Depois, os sutis: um inseto, estalos de galhos, passos mínimos sob as folhas. Por fim, os silêncios entre eles — e o seu sopro se misturando à música."},
+ olfato:{n:"Olfato",ic:"olfato",t:"Farejar a paisagem",d:"Inspire lenta e profundamente. Qual é o primeiro cheiro que você percebe? E o mais sutil? Terra, casca, resina, uma flor distante. Você está <em>respirando a paisagem</em> — e ela seguirá agindo em você por horas."},
+ tato:{n:"Tato",ic:"tato",t:"Texturas do mundo",d:"Toque com calma: a casca rugosa, uma folha seca que se esfarela, uma pedra polida pelo tempo, o chão. Se for seguro, experimente os pés descalços. Você é feita/o da mesma matéria que tudo aqui."},
+ paladar:{n:"Paladar",ic:"olfato",t:"O gosto do lugar",d:"O sentido mais delicado: <em>só prove o que conhece com certeza</em> — ou traga de casa um chá ou uma fruta e deguste aqui, com atenção total. Ao saborear com presença, você incorpora a paisagem. Nunca prove o desconhecido."}};
+
+/* Eixos do Radar da Conexão */
+const AXES=[
+ {n:"Presença",q:"Me desliguei do mundo urbano?",tip:"Crie um rito de chegada: modo avião, saudação silenciosa ao lugar e a respiração 4·4·4·4. O rito abre uma «porta mágica» na cognição — avisa à mente que um novo tempo começou."},
+ {n:"Sentidos",q:"Quantos sentidos despertei de verdade?",tip:"No próximo banho, inclua o sentido que você menos usa — quase sempre o olfato ou o tato. Monte um Banho Sob Medida escolhendo-o de propósito."},
+ {n:"Entrega",q:"Dei tempo suficiente, sem pressa?",tip:"Ninguém toma banho em trinta segundos. Estique para 25 minutos ou mais — e, quando a vida permitir, experimente uma imersão longa: é aí que a floresta trabalha fundo."},
+ {n:"Conexão",q:"Senti que eu fazia parte do lugar?",tip:"Pratique as meditações da Semente ou de Tornar-se Floresta: visualizar-se raiz, tronco e copa dissolve a fronteira entre você e a paisagem."},
+ {n:"Respeito",q:"Pedi licença e não deixei rastros?",tip:"Peça licença ao chegar, toque com delicadeza, nada de colher por capricho — e faça o check-out ecológico ao sair. Preservar é a gratidão mais concreta."},
+ {n:"Gratidão",q:"Fechei o ciclo com um gesto?",tip:"Encerre sempre com um signo: uma palavra dita baixinho, a mão pousada no tronco, uma respiração longa. O símbolo sela a experiência na memória — e a faz durar."}];
+
+/* Jornada de 21 dias */
+const JOURNEY=[
+ {w:1,t:"Chegar e pedir licença",m:10,d:"Escolha seu lugar de natureza possível — parque, praça, quintal. Chegue em silêncio, peça licença às vidas que ali habitam e apenas permaneça por dez minutos, sem tarefa alguma."},
+ {w:1,t:"Trinta tons de verde",m:10,d:"Quantos tons de verde diferentes seus olhos conseguem distinguir? Percorra folhas, musgos, sombras. O verde ocupa um espectro que os olhos processam com serenidade — deixe-os descansar nele."},
+ {w:1,t:"Escuta em camadas",m:10,d:"Olhos fechados, três minutos: identifique os sons mais próximos, os médios e o mais distante. Depois, procure o silêncio entre eles."},
+ {w:1,t:"O cheiro da terra",m:8,d:"Aproxime-se do solo, de uma casca, de folhas caídas. Inspire profundamente três vezes em cada. Que memórias os cheiros trazem?"},
+ {w:1,t:"A palma na casca",m:8,d:"Escolha uma árvore. Pouse a palma da mão no tronco e permaneça um minuto inteiro. Sinta a temperatura, os sulcos, a firmeza de quem está há décadas no mesmo lugar."},
+ {w:1,t:"Céu e horizonte",m:8,d:"Deite-se ou incline o olhar para cima. Observe as copas se movendo, as nuvens atravessando. Olhos que focam longe descansam do mundo das telas."},
+ {w:1,t:"Síntese dos sentidos",m:15,d:"Hoje, percorra os cinco: uma coisa bela que você vê, um som, um cheiro, uma textura — e o ar que você prova ao respirar fundo. A semana do despertar se completa."},
+ {w:2,t:"Fascinação suave",m:10,d:"Encontre algo em movimento — folhas ao vento, água, nuvens — e apenas observe, sem esforço. É a atenção descansando: deixe a mente divagar de leve, como as folhas."},
+ {w:2,t:"Caminhar como quem escuta",m:12,d:"Caminhe o mais lentamente que conseguir por dez minutos. Cada passo com consciência, como se o chão fosse novo. A pressa é o oposto da floresta."},
+ {w:2,t:"A lição da árvore curvada",m:10,d:"Encontre uma árvore que cresceu torta, curvada, adaptada. O que ela resolveu com essa forma? Que ensinamento essa flexibilidade traz para a sua vida agora?"},
+ {w:2,t:"Respirar a paisagem",m:8,d:"Visualize as moléculas que a vegetação exala — o presente invisível. A cada inspiração, imagine a paisagem entrando em você e circulando, tornando-se corpo."},
+ {w:2,t:"Sopro e vento",m:8,d:"Sincronize: inspire quando o vento tocar as folhas, expire quando ele descansar. Se não houver vento, siga o canto intermitente de um pássaro."},
+ {w:2,t:"Pés descalços",m:10,d:"Num trecho seguro e limpo, descalce os pés. Grama, terra, areia — as terminações da planta dos pés acordam. Sinta o apoio: é a Terra segurando você."},
+ {w:2,t:"A teia invisível",m:12,d:"Observe as conexões: a formiga e a folha, a raiz e a pedra, o pássaro e o fruto. Nada aqui existe sozinho. Você também não — trace mentalmente os fios que te ligam a este lugar."},
+ {w:3,t:"Tornar-se floresta",m:15,d:"Pratique a meditação da árvore: raízes saindo dos pés, braços como galhos, cabelos como folhas. (No app: Práticas → Tornar-se Floresta.)"},
+ {w:3,t:"Diário de campo",m:12,d:"Leve papel e caneta (não o celular). Registre em palavras ou pequenos desenhos o que a natureza mostrar. Anotar à mão é uma forma de ver duas vezes."},
+ {w:3,t:"Gratidão nomeada",m:8,d:"Ao final da sua permanência, diga em voz baixa uma palavra de gratidão — calma, beleza, aprendizado — oferecida ao lugar que te acolheu."},
+ {w:3,t:"Cuidar da casa",m:10,d:"Hoje, deixe o lugar melhor do que encontrou: recolha um lixo que não é seu. Preservar é a forma mais concreta de agradecer."},
+ {w:3,t:"O perfume que lembra",m:8,d:"Volte ao cheiro que mais te marcou nestes dias. Inspire-o profundamente: você está gravando um atalho de volta à calma, disponível para sempre."},
+ {w:3,t:"Levar alguém",m:20,d:"Convide uma pessoa querida e apresente-lhe o seu lugar. Quando trocamos experiências, cada um fica com duas. Guie-a por um sentido: o olhar, a escuta, o toque."},
+ {w:3,t:"Você também é floresta",m:15,d:"Retorne ao seu lugar uma última vez nesta jornada. Percorra o que aprendeu. E assuma o compromisso: doses regulares de natureza, para sempre. Aqui, agora, você também é floresta."}];
+const WEEKS=[["Despertar dos Sentidos","Reaprender a ver, ouvir, cheirar e tocar"],["Diálogo com a Floresta","Sincronizar corpo e paisagem"],["Pertencimento","Tornar-se parte — e cuidar"]];
+
+/* Saber — cap. 2, 6 e cuidados do Guia */
+const SABER=[
+ {i:"folha",t:"O que é um banho de floresta?",b:"<p>Uma imersão <em>sensorial e contemplativa</em> em uma área verde — sem pressa, sem desempenho, sem chegada. A expressão japonesa <em>shinrin-yoku</em> («banho de floresta») foi cunhada em 1982, quando o Japão adotou a prática como estratégia de saúde pública.</p><p>É um «banho» porque o praticante se deixa banhar pelos elementos naturais: a multiplicidade de verdes, o coro dos pássaros, o aroma úmido da terra, a textura dos troncos. Não é caminhada, não é esporte: é <em>estar presente, de corpo e mente</em>, permitindo que a atmosfera verde lave as tensões.</p>"},
+ {i:"ciencia",t:"O que a ciência mediu",b:"<p>Estudos controlados — como os do médico Qing Li, no Japão — registram após a prática:</p><p>• <em>Redução do cortisol</em>, o hormônio do estresse, no sangue e na saliva;<br>• Queda da pressão arterial e da frequência cardíaca;<br>• Maior atividade do sistema nervoso <em>parassimpático</em> (repouso e recuperação);<br>• Aumento das células <em>NK (natural killers)</em> do sistema imunológico — efeito que pode perdurar por quase um mês após uma imersão.</p><p>Bastam cerca de <em>20 minutos</em> de caminhada atenta em um parque para o cortisol começar a baixar.</p>"},
+ {i:"olfato",t:"Fitoncidas: o banho invisível",b:"<p>As plantas exalam compostos orgânicos voláteis — <em>fitoncidas</em> e terpenos como α-pineno, limoneno e cineol. É o «cheiro de mato». Ao caminhar entre árvores, seus pulmões inspiram essas moléculas, que caem na corrente sanguínea.</p><p>Muitas têm ação relaxante, anti-inflamatória e antioxidante. E há mais: receptores olfativos existem não só no nariz, mas no coração, nos pulmões, nos rins — as moléculas da floresta <em>conversam diretamente com os órgãos</em>. Um passeio entre árvores tempera o sangue com natureza, e ela segue agindo por horas.</p><p>E há um bônus: o olfato é o sentido que mais grava memórias. Cada aroma de floresta que você aprende vira um <em>portal de calma</em> que fica com você para sempre.</p>"},
+ {i:"olho",t:"Fascinação suave",b:"<p>A cidade prende a atenção com estímulos duros — buzinas, telas, anúncios — que esgotam a mente. A natureza opera por <em>fascinação suave</em>: o balanço das folhas e o correr da água capturam a atenção sem exigi-la por inteiro.</p><p>Segundo a <em>Teoria da Restauração da Atenção</em> (Universidade de Michigan), é nesse estado que a atenção dirigida se recupera, como um músculo em descanso. Resultado: mente mais clara, foco restaurado, criatividade que volta. E o verde ajuda: em experimentos, caminhar sob luz esverdeada reduziu a frequência cardíaca — o olho humano processa o verde com serenidade.</p>"},
+ {i:"alerta",t:"Sem romantismos — cuidados",b:"<p>A natureza oferece experiências potentes, mas <em>não deve ser romantizada</em>: plantas e animais também se defendem. Não temer — respeitar.</p><p>• Não toque nem cheire plantas desconhecidas; observe animais <em>sem</em> tentar pegá-los;<br>• Calçados fechados e firmes; roupas que protejam de arranhões e insetos;<br>• Leve sua água — não beba de riachos, por mais limpos que pareçam;<br>• Evite perfumes fortes: certas moléculas atraem insetos;<br>• Repelente e proteção solar conforme o lugar;<br>• Atenção ao imprevisível: <em>atenção nunca será demais</em>.</p>"},
+ {i:"relogio",t:"Quanto tempo deve durar?",b:"<p>No app, o mínimo é <em>10 minutos</em> — o suficiente para o rito de chegada e um sentido. Mas o recomendado é <em>25 minutos ou mais</em>: a ciência registra queda do cortisol a partir de cerca de 20 minutos de imersão atenta.</p><p>E quando a vida permitir, presenteie-se com uma imersão longa — para a Mestra, um banho completo pede <em>duas horas ou mais</em>: tempo de saborear, digerir e deixar a floresta trabalhar. As etapas se repetem em ciclos: saudação → caminhada sensorial → meditação → alongamento → gratidão.</p>"},
+ {i:"limiar",t:"O rito de entrada e saída",b:"<p>A mente é simbólica — e um pequeno rito <em>abre uma porta mágica na cognição</em>. Ao chegar: pare, respire fundo, saude o lugar. «Estou entrando em um novo tempo.» É a saudação que separa o banho da vida corrida.</p><p>Ao sair, o gesto de gratidão constrói um <em>signo</em>: uma palavra, a mão no tronco, um olhar demorado. É ele que sela a experiência na memória — e permite que ela continue agindo nos dias seguintes.</p>"},
+ {i:"olfato",t:"Paladar: o sentido da intimidade",b:"<p>Provar a floresta é a conexão mais íntima — os guias japoneses do <em>shinrin-yoku</em> já a indicavam. Mas é também o sentido que exige mais cuidado: <em>nunca prove o que não conhece</em>; frutos caídos podem carregar microorganismos.</p><p>O caminho seguro: leve de casa um chá de ervas ou uma fruta e deguste no lugar, com atenção total ao sabor. Partilhar alimento é um gesto antigo — <em>companheiro</em>, na origem da palavra, é quem divide o pão.</p>"},
+ {i:"mochila",t:"O que levar (toque para marcar)",b:"",check:["Água (garrafa própria)","Calçado fechado e firme","Chapéu ou boné","Repelente","Toalhinha ou canga para sentar","Caderninho e caneta (não o celular)","Lanche leve: frutas ou castanhas","Saquinho para o próprio lixo"]}];
+
+const MOODS=[["exausta/o",.12],["tensa/o",.32],["neutra/o",.55],["presente",.78],["florescendo",1]];
+const CHIPS=["terra úmida","farfalhar","petricor","musgo","resina","brisa","canto de pássaro","silêncio","luz filtrada","frescor","casca rugosa","verde profundo"];
+
+/* ================= ESTADO ================= */
+const store={get(k,f){try{const v=localStorage.getItem("fi_"+k);return v?JSON.parse(v):f}catch(e){return f}},set(k,v){try{localStorage.setItem("fi_"+k,JSON.stringify(v))}catch(e){}}};
+let journal=store.get("journal",[]);
+let jdone=store.get("journey",[]);
+let streak=store.get("streak",{count:0,last:null});
+let muted=store.get("muted",false);
+const $=id=>document.getElementById(id);
+const todayISO=()=>new Date().toISOString().slice(0,10);
+
+/* ================= SOM ================= */
+let ac=null;
+function chime(base=523.25){
+  if(muted)return;
+  try{
+    ac=ac||new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state==="suspended")ac.resume();
+    [[base,0,.10],[base*1.5,.12,.05],[base*2,.3,.03]].forEach(([f,dl,g])=>{
+      const o=ac.createOscillator(),ga=ac.createGain();
+      o.type="sine";o.frequency.value=f;
+      const t=ac.currentTime+dl;
+      ga.gain.setValueAtTime(.0001,t);
+      ga.gain.exponentialRampToValueAtTime(g,t+.03);
+      ga.gain.exponentialRampToValueAtTime(.0001,t+2.4);
+      o.connect(ga).connect(ac.destination);o.start(t);o.stop(t+2.5);
+    });
+  }catch(e){}
+}
+
+function chirp(){
+  if(muted)return;
+  try{
+    ac=ac||new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state==="suspended")ac.resume();
+    const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;
+    o.type="sine";
+    o.frequency.setValueAtTime(1244.51,t);
+    o.frequency.exponentialRampToValueAtTime(1567.98,t+.09);
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(.07,t+.02);
+    g.gain.exponentialRampToValueAtTime(.0001,t+.22);
+    o.connect(g).connect(ac.destination);o.start(t);o.stop(t+.25);
+  }catch(e){}
+}
+
+/* ================= NAV ================= */
+document.querySelectorAll(".nbtn").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".nbtn").forEach(x=>x.classList.toggle("active",x===b));
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  $("v-"+b.dataset.v).classList.add("active");
+  $("main").scrollTo({top:0});
+}));
+function goto(v){document.querySelector(`.nbtn[data-v="${v}"]`).click()}
+
+/* ================= HOJE ================= */
+function renderHoje(){
+  const now=new Date(),h=now.getHours();
+  $("greet").textContent=h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
+  let d=now.toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
+  $("date").textContent=d.charAt(0).toUpperCase()+d.slice(1);
+  const doy=Math.floor((now-new Date(now.getFullYear(),0,0))/864e5);
+  const p=ALLP[doy%ALLP.length];
+  $("hero-t").textContent=p.title;
+  $("hero-d").textContent=p.sub+".";
+  $("hero-min").textContent="≈ "+p.min+" min";
+  $("hero-sense").textContent=SENSES[p.sense];
+  $("hero-go").onclick=()=>openPractice(p);
+  const q=QUOTES[doy%QUOTES.length];
+  $("quote-t").textContent="«"+q[0]+"»";
+  $("quote-a").textContent=q[1];
+  const done=jdone.filter(Boolean).length;
+  $("j-num").textContent=Math.min(done+1,21);
+  $("j-label").textContent=" · "+WEEKS[Math.min(Math.floor(Math.min(done,20)/7),2)][0];
+  $("j-bar").style.width=(done/21*100)+"%";
+  $("streak-n").textContent=streak.count;
+  $("jstate").onclick=()=>goto("jornada");
+}
+$("tile-breath").addEventListener("click",()=>openPractice({id:"resp",icon:"limiar",title:"Respiração 4·4·4·4",sub:"Aterramento",sense:"corpo",min:2,steps:[
+ {t:"Respiração da floresta",s:128,breath:true,d:"Inspire em 4 tempos… segure por 4… expire em 4… permaneça vazia/o por 4. Oito ciclos para regular o coração e oxigenar a mente. <em>Siga o círculo.</em>"}]}));
+$("tile-diario").addEventListener("click",()=>goto("diario"));
+
+/* ================= PRÁTICAS ================= */
+function renderPraticas(){
+  const card=(p,i)=>`
+   <button class="pcard" data-id="${p.id}">
+     <span class="pnum">${String(i+1).padStart(2,"0")}</span>
+     <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[p.icon]}</svg></span>
+     <span style="flex:1"><b>${p.title}</b><span class="sub">${p.sub}</span></span>
+     <span class="min">${p.min} min</span>
+   </button>`;
+  $("plist").innerHTML=
+   `<button class="tile-wide" id="build-cta" style="margin-top:0">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS.relogio}</svg></span>
+      <span style="flex:1"><b>Banho sob medida</b><span>Monte pelo seu tempo — de 10 a 90 minutos</span></span>
+      <svg class="go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="glabel">Banhos guiados</div>`+
+   PRACTICES.map(card).join("")+
+   `<div class="glabel">Meditações da Mestra</div>`+
+   MEDITS.map(card).join("");
+  document.querySelectorAll(".pcard").forEach(c=>c.addEventListener("click",()=>{
+    const p=ALLP.find(x=>x.id===c.dataset.id);
+    if(p)openPractice(p);
+  }));
+  $("build-cta").addEventListener("click",openBuilder);
+}
+
+/* ================= PLAYER ================= */
+const CIRC=339.29;
+let P={p:null,i:0,left:0,total:0,timer:null,paused:false};
+function openPractice(p){
+  P={p,i:0,left:p.steps[0].s,total:p.steps[0].s,timer:null,paused:false,count:0};
+  $("pl-name").textContent=p.title;
+  $("pl-dots").innerHTML=p.steps.map((_,i)=>`<i${i===0?' class="on"':''}></i>`).join("");
+  $("pl-leaves").innerHTML=[...Array(7)].map((_,i)=>`<i style="left:${8+i*13}%;animation-duration:${13+(i*2.7)%9}s;animation-delay:${-i*3.1}s"></i>`).join("");
+  $("player-ov").classList.add("show");
+  document.body.style.overflow="hidden";
+  showStep();startTimer();chime(440);
+}
+function showStep(){
+  const st=P.p.steps[P.i];
+  $("pl-step").textContent="Passo "+(P.i+1)+" · "+P.p.steps.length;
+  $("pl-h").textContent=st.t;
+  $("pl-d").innerHTML=st.d;
+  $("ring-wrap").classList.toggle("breathing",!!st.breath);
+  $("pl-phase").textContent="";
+  const cb=$("pl-count");
+  if(st.counter){cb.style.display="flex";$("pl-count-n").textContent=P.count}
+  else cb.style.display="none";
+  ["pl-step","pl-h","pl-d"].forEach(id=>{const el=$(id);el.classList.remove("stepin");void el.offsetWidth;el.classList.add("stepin")});
+  document.querySelectorAll("#pl-dots i").forEach((d,i)=>d.classList.toggle("on",i<=P.i));
+  drawTime();
+}
+function drawTime(){
+  const m=Math.floor(P.left/60),s=Math.round(P.left%60);
+  $("pl-time").textContent=m+":"+String(s).padStart(2,"0");
+  $("ring-fg").style.strokeDashoffset=CIRC*(1-P.left/P.total);
+  const st=P.p.steps[P.i];
+  if(st.breath){
+    const ph=Math.floor(((st.s-P.left)%16)/4);
+    $("pl-phase").textContent=["Inspire","Segure","Expire","Vazio"][ph];
+  }
+}
+function startTimer(){
+  clearInterval(P.timer);
+  P.timer=setInterval(()=>{
+    if(P.paused)return;
+    P.left-=.25;
+    if(P.left<=0){ nextStep(); return }
+    drawTime();
+  },250);
+}
+function nextStep(){
+  if(P.i<P.p.steps.length-1){P.i++;P.left=P.p.steps[P.i].s;P.total=P.left;showStep();chime()}
+  else{closePlayer();openDone()}
+}
+function prevStep(){
+  if(P.i>0){P.i--}
+  P.left=P.p.steps[P.i].s;P.total=P.left;showStep();
+}
+function closePlayer(){
+  clearInterval(P.timer);
+  $("player-ov").classList.remove("show");
+  document.body.style.overflow="";
+}
+$("pl-next").addEventListener("click",nextStep);
+$("pl-prev").addEventListener("click",prevStep);
+$("pl-close").addEventListener("click",closePlayer);
+$("pl-count").addEventListener("click",()=>{P.count++;$("pl-count-n").textContent=P.count;chirp()});
+$("pl-play").addEventListener("click",()=>{
+  P.paused=!P.paused;
+  $("ic-pp").innerHTML=P.paused?'<path d="M7 4.5 L19 12 L7 19.5 Z"/>':'<rect x="6.5" y="5" width="4" height="14" rx="1.4"/><rect x="13.5" y="5" width="4" height="14" rx="1.4"/>';
+  $("ring-wrap").style.animationPlayState=P.paused?"paused":"running";
+});
+$("pl-mute").addEventListener("click",()=>{
+  muted=!muted;store.set("muted",muted);
+  $("ic-sound").innerHTML=muted?'<path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/><path d="M16 9 l5 6 M21 9 l-5 6"/>':'<path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/><path d="M16.5 8.5 a5 5 0 0 1 0 7"/>';
+});
+
+/* ================= COMPLETION ================= */
+let doneMood=null;
+function openDone(){
+  chime(659.25);
+  doneMood=null;$("grat").value="";
+  $("done-sub").innerHTML=(P.count>0?`Você percebeu <em>${P.count} ${P.count===1?"voz":"vozes"}</em> — a escuta está despertando. `:"Prática concluída. ")+"Antes de partir, o círculo de gratidão: <em>uma palavra</em> pelo que você recebeu.";
+  $("done-moods").innerHTML=MOODS.map((m,i)=>moodBtn(m,i)).join("");
+  document.querySelectorAll("#done-moods .mood").forEach((b,i)=>b.addEventListener("click",()=>{
+    doneMood=i;
+    document.querySelectorAll("#done-moods .mood").forEach((x,j)=>x.classList.toggle("sel",j===i));
+  }));
+  $("done-ov").classList.add("show");
+}
+function moodBtn(m,i){
+  return `<button class="mood" type="button">
+    <svg viewBox="0 0 24 24"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z" fill="#3F7652" opacity="${.25+m[1]*.75}"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" fill="#A47F04" opacity="${.2+m[1]*.6}"/></svg>
+    <span>${m[0]}</span></button>`;
+}
+function bumpStreak(){
+  const t=todayISO();
+  if(streak.last===t)return;
+  const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  streak={count:streak.last===y?streak.count+1:1,last:t};
+  store.set("streak",streak);
+}
+$("done-save").addEventListener("click",()=>{
+  const g=$("grat").value.trim();
+  bumpStreak();
+  if(g||doneMood!==null||P.count>0){
+    const ch=[];
+    if(g)ch.push("gratidão: "+g);
+    if(P.count>0)ch.push(P.count+(P.count===1?" voz":" vozes")+" de pássaros");
+    journal.unshift({d:new Date().toISOString(),mood:doneMood,chips:ch,text:(g?("Palavra de gratidão: «"+g+"»"):"Prática concluída")+" — "+P.p.title+"."});
+    store.set("journal",journal);renderEntries();
+  }
+  $("done-ov").classList.remove("show");renderHoje();openEval();
+});
+$("done-skip").addEventListener("click",()=>{bumpStreak();$("done-ov").classList.remove("show");renderHoje();openEval()});
+
+/* ================= JORNADA ================= */
+function renderJourney(){
+  const cur=jdone.filter(Boolean).length;
+  $("weeks").innerHTML=WEEKS.map((w,wi)=>`
+   <div class="week">
+     <div class="week-h"><span class="n">${["I","II","III"][wi]}</span><div><b>${w[0]}</b><span>${w[1]}</span></div></div>
+     <div class="days">${JOURNEY.map((d,i)=>({d,i})).filter(x=>x.d.w===wi+1).map(({d,i})=>{
+        const done=!!jdone[i],curr=i===cur;
+        return `<button class="day ${done?"done":curr?"current":i>cur?"locked":""}" data-i="${i}" ${i>cur&&!done?"disabled":""}>
+          ${done?'<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#E8F8AF" stroke-width="3" stroke-linecap="round"><path d="M4 12.5 L10 18 L20 6.5"/></svg>':""}
+          <small>DIA</small>${i+1}</button>`}).join("")}</div>
+   </div>`).join("");
+  document.querySelectorAll(".day:not(.locked)").forEach(b=>b.addEventListener("click",()=>openDay(+b.dataset.i)));
+}
+function openDay(i){
+  const d=JOURNEY[i],done=!!jdone[i],cur=jdone.filter(Boolean).length;
+  $("day-modal").innerHTML=`
+    <div class="handle"></div>
+    <p class="kicker">Dia ${i+1} · Semana ${d.w} — ${WEEKS[d.w-1][0]}</p>
+    <h3>${d.t}</h3>
+    <p class="sub" style="margin:10px 0 4px">${d.d}</p>
+    <p style="font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);margin:12px 0 16px">≈ ${d.m} minutos</p>
+    ${done?'<div style="text-align:center;padding:12px;background:rgba(63,118,82,.1);border-radius:14px;font-weight:700;color:var(--moss);font-size:13.5px">✓ Vivido. A floresta lembra.</div>'
+      :i===cur?'<button class="btn gold" style="width:100%" id="day-done">Marcar como vivido</button>'
+      :'<div style="text-align:center;padding:12px;color:var(--ink-40);font-size:13px;font-weight:600">Complete o dia anterior para desbloquear.</div>'}
+    <button style="width:100%;margin-top:10px;padding:12px;color:var(--ink-40);font-weight:700;font-size:12.5px" id="day-close">Fechar</button>`;
+  $("day-ov").classList.add("show");
+  const dd=$("day-done");
+  if(dd)dd.addEventListener("click",()=>{
+    jdone[i]=true;store.set("journey",jdone);bumpStreak();chime(659.25);
+    $("day-ov").classList.remove("show");renderJourney();renderHoje();
+  });
+  $("day-close").addEventListener("click",()=>$("day-ov").classList.remove("show"));
+}
+
+/* ================= DIÁRIO ================= */
+let selMood=null,selChips=new Set();
+function renderDiaryForm(){
+  $("moods").innerHTML=MOODS.map((m,i)=>moodBtn(m,i)).join("");
+  document.querySelectorAll("#moods .mood").forEach((b,i)=>b.addEventListener("click",()=>{
+    selMood=i;
+    document.querySelectorAll("#moods .mood").forEach((x,j)=>x.classList.toggle("sel",j===i));
+  }));
+  $("chips").innerHTML=CHIPS.map(c=>`<button class="chip" type="button">${c}</button>`).join("");
+  document.querySelectorAll("#chips .chip").forEach(b=>b.addEventListener("click",()=>{
+    const c=b.textContent;
+    selChips.has(c)?selChips.delete(c):selChips.add(c);
+    b.classList.toggle("sel");
+  }));
+}
+$("j-save").addEventListener("click",()=>{
+  const t=$("j-text").value.trim();
+  if(!t&&selMood===null&&!selChips.size)return;
+  journal.unshift({d:new Date().toISOString(),mood:selMood,chips:[...selChips],text:t});
+  store.set("journal",journal);
+  $("j-text").value="";selChips=new Set();selMood=null;
+  renderDiaryForm();renderEntries();chime(587.33);
+  $("main").scrollTo({top:$("entries").offsetTop-90,behavior:"smooth"});
+});
+function renderEntries(){
+  if(!journal.length){
+    $("entries").innerHTML=`<div class="empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1D0E03" stroke-width="1.5" stroke-linecap="round"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z"/></svg>
+      <p>Seu herbário de sensações ainda está em branco.<br>A primeira folha se guarda hoje.</p></div>`;
+    return;
+  }
+  $("entries").innerHTML=journal.map((e,i)=>{
+    const dt=new Date(e.d).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+    return `<div class="entry">
+      <div class="eh"><span class="ed">${dt}${e.mood!==null&&e.mood!==undefined?" · "+MOODS[e.mood][0]:""}</span>
+      <button class="del" data-i="${i}">remover</button></div>
+      ${e.text?`<p>${e.text.replace(/</g,"&lt;")}</p>`:""}
+      ${e.chips&&e.chips.length?`<div class="echips">${e.chips.map(c=>`<i>${c}</i>`).join("")}</div>`:""}
+    </div>`}).join("");
+  document.querySelectorAll(".entry .del").forEach(b=>b.addEventListener("click",()=>{
+    journal.splice(+b.dataset.i,1);store.set("journal",journal);renderEntries();
+  }));
+}
+
+/* ================= SABER ================= */
+function renderSaber(){
+  $("saber").innerHTML=SABER.map((s,i)=>`
+   <div class="acc" data-i="${i}">
+     <button type="button">
+       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.i]}</svg></span>
+       <b>${s.t}</b>
+       <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+     </button>
+     <div class="body"><div class="body-in">${s.check?s.check.map((c,ci)=>`
+        <div class="check" data-c="${ci}"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF9EE" stroke-width="3.5" stroke-linecap="round"><path d="M4 12.5 L10 18 L20 6.5"/></svg></span>${c}</div>`).join(""):s.b}</div></div>
+   </div>`).join("");
+  document.querySelectorAll(".acc>button").forEach(b=>b.addEventListener("click",()=>b.parentElement.classList.toggle("open")));
+  document.querySelectorAll(".check").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("on")));
+}
+
+/* ================= BANHO SOB MEDIDA ================= */
+let bSel=new Set(["visao","audicao","olfato","tato"]),bMed=true;
+function openBuilder(){$("build-ov").classList.add("show");renderBuilder()}
+function renderBuilder(){
+  const T=+$("b-rng").value;
+  $("b-min").textContent=T;
+  const note=$("b-note");
+  if(T<25){note.textContent="Válido — mas o recomendado é 25 min ou mais. Ninguém toma banho em trinta segundos.";note.className="rng-note low"}
+  else if(T<60){note.textContent="Bom tempo de imersão. Para mergulhos profundos, a Mestra sugere 2 horas ou mais.";note.className="rng-note ok"}
+  else{note.textContent="Uma imersão de verdade — tempo de saborear e digerir a floresta.";note.className="rng-note ok"}
+  $("b-senses").innerHTML=Object.entries(SENSE_BLOCKS).map(([k,s])=>`
+    <button class="stg ${bSel.has(k)?"sel":""}" data-k="${k}" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.ic]}</svg>${s.n}</button>`).join("")+
+   `<button class="stg ${bMed?"sel":""}" data-k="__med" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS.arvore}</svg>Meditação</button>`;
+  document.querySelectorAll("#b-senses .stg").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.k;
+    if(k==="__med")bMed=!bMed;
+    else bSel.has(k)?bSel.delete(k):bSel.add(k);
+    renderBuilder();
+  }));
+  const parts=["chegada",...[...bSel].map(k=>SENSE_BLOCKS[k].n.toLowerCase()),...(bMed?["meditação"]:[]),"gratidão"];
+  $("b-sum").innerHTML=`Seu banho: <b>${T} min</b> · ${parts.join(" → ")}`;
+}
+function buildCustom(){
+  const Tm=+$("b-rng").value,T=Tm*60,senses=[...bSel];
+  const open1=Math.round(Math.min(120,Math.max(45,T*.07)));
+  const open2=Math.max(64,Math.round(T*.09/16)*16);
+  const close1=Math.round(Math.min(120,Math.max(50,T*.07)));
+  const close2=Math.round(Math.min(90,Math.max(40,T*.05)));
+  let med=bMed?Math.round(Math.min(600,Math.max(120,T*.2))):0;
+  let rest=T-open1-open2-close1-close2-med;
+  if(senses.length&&rest<60*senses.length&&med){
+    const need=60*senses.length-rest;
+    med=Math.max(0,med-need);rest=T-open1-open2-close1-close2-med;
+  }
+  const each=senses.length?Math.max(60,Math.floor(rest/senses.length)):0;
+  const steps=[
+   {t:"Travessia do limiar",s:open1,d:"Celular em modo avião. Chegue devagar, <em>peça licença</em> às vidas que aqui habitam e saude o lugar em silêncio: um novo tempo começa agora."},
+   {t:"Respiração da chegada",s:open2,breath:true,d:"Inspire em 4… segure 4… expire em 4… vazio por 4. Deixe o ritmo do dia escorrer para a terra a cada ciclo."}];
+  senses.forEach(k=>{const s=SENSE_BLOCKS[k];steps.push({t:s.t,s:each,d:s.d})});
+  if(!senses.length&&rest>0)steps.push({t:"Caminhada silenciosa",s:rest,d:"Caminhe o mais lentamente que conseguir, deixando o lugar convidar seus sentidos, um a um. Sem meta, sem chegada — só presença."});
+  if(med){
+    steps.push({t:"Tornar-se floresta",s:Math.round(med*.6),d:"Acomode-se. Feche os olhos. Raízes descem dos seus pés e se entrelaçam às raízes ao redor; os braços são galhos; os cabelos, folhas ao vento."});
+    steps.push({t:"Você também é floresta",s:med-Math.round(med*.6),d:"<em>Aqui, agora, você também é floresta. Você é a erva rasteira e a árvore frondosa, o riacho, a terra, a raiz — e as conexões entre cada parte.</em>"});
+  }
+  steps.push({t:"Palavra de gratidão",s:close1,d:"Pense em <em>uma palavra</em> que resuma o que você recebeu — e ofereça-a ao lugar, em voz baixa. O símbolo sela a experiência."});
+  steps.push({t:"Check-out ecológico",s:close2,d:"Olhe ao redor: nenhum vestígio fica. O que você leva daqui para o seu cotidiano? Escolha — e atravesse o limiar de volta."});
+  return {id:"custom",icon:"relogio",title:"Banho Sob Medida",sub:Tm+" minutos",sense:"corpo",min:Tm,steps};
+}
+$("b-rng").addEventListener("input",renderBuilder);
+$("b-close").addEventListener("click",()=>$("build-ov").classList.remove("show"));
+$("b-start").addEventListener("click",()=>{$("build-ov").classList.remove("show");openPractice(buildCustom())});
+$("tile-build").addEventListener("click",openBuilder);
+
+/* ================= RADAR DA CONEXÃO ================= */
+let evals=store.get("evals",[]);
+let evalScores=[3,3,3,3,3,3];
+function openEval(){
+  evalScores=[3,3,3,3,3,3];
+  $("eval-rows").innerHTML=AXES.map((a,i)=>`
+   <div class="eval-row">
+     <div class="q"><b>${a.n}</b><span>${a.q}</span></div>
+     <div class="lvs">${[1,2,3,4,5].map(v=>`<button class="lv ${v<=3?"on":""}" data-i="${i}" data-v="${v}" type="button" aria-label="${a.n} nível ${v}"><svg viewBox="0 0 24 24"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/></svg></button>`).join("")}</div>
+   </div>`).join("");
+  document.querySelectorAll("#eval-rows .lv").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.i,v=+b.dataset.v;
+    evalScores[i]=v;
+    document.querySelectorAll(`#eval-rows .lv[data-i="${i}"]`).forEach(x=>x.classList.toggle("on",+x.dataset.v<=v));
+  }));
+  $("eval-ov").classList.add("show");
+}
+$("eval-save").addEventListener("click",()=>{
+  evals.unshift({d:new Date().toISOString(),s:[...evalScores]});
+  if(evals.length>60)evals.length=60;
+  store.set("evals",evals);
+  renderRadar();chime(587.33);
+  $("eval-ov").classList.remove("show");
+  goto("diario");$("main").scrollTo({top:0});
+});
+$("eval-skip").addEventListener("click",()=>$("eval-ov").classList.remove("show"));
+$("eval-open").addEventListener("click",openEval);
+
+function radarSVG(avg,last){
+  const cx=150,cy=128,R=86,N=AXES.length;
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/N,r=R*v/5;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]};
+  const poly=vs=>vs.map((v,i)=>pt(i,v).map(n=>n.toFixed(1)).join(",")).join(" ");
+  let grid="";
+  [5,3.4,1.8].forEach(l=>{grid+=`<polygon points="${poly(AXES.map(()=>l))}" fill="none" stroke="rgba(29,14,3,.12)" stroke-width="1"/>`});
+  let axes="",labels="";
+  AXES.forEach((a,i)=>{
+    const [x,y]=pt(i,5);
+    axes+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(29,14,3,.12)"/>`;
+    const [lx,ly]=pt(i,6.25);
+    labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-family="Karla,sans-serif" font-size="10.5" font-weight="700" letter-spacing=".06em" fill="rgba(29,14,3,.62)">${a.n.toUpperCase()}</text>`;
+  });
+  const avgP=`<polygon points="${poly(avg)}" fill="rgba(63,118,82,.22)" stroke="#3F7652" stroke-width="2" stroke-linejoin="round"/>`;
+  const lastP=`<polygon points="${poly(last)}" fill="none" stroke="#A47F04" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>`+
+    last.map((v,i)=>{const [x,y]=pt(i,v);return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="#A47F04"/>`}).join("");
+  return `<svg class="radar-svg" viewBox="0 0 300 256">${grid}${axes}${avgP}${lastP}${labels}</svg>`;
+}
+function renderRadar(){
+  const h=$("radar-holder"),tips=$("radar-tips");
+  if(!evals.length){
+    h.innerHTML=`<div class="empty" style="margin-top:12px;padding:24px 16px"><p>Após seu próximo banho, avalie o encontro —<br>e seu radar florescerá aqui.</p></div>`;
+    tips.innerHTML="";
+    return;
+  }
+  const n=Math.min(evals.length,5);
+  const avg=AXES.map((_,i)=>evals.slice(0,n).reduce((a,e)=>a+e.s[i],0)/n);
+  const last=evals[0].s;
+  h.innerHTML=radarSVG(avg,last)+
+   `<div class="radar-leg"><span><i style="background:#3F7652"></i>média (últimos ${n})</span><span><i style="background:#A47F04"></i>último encontro</span></div>`;
+  const order=avg.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]);
+  tips.innerHTML=order.slice(0,2).map(([v,i])=>`<div class="tipbox"><b>Para crescer em ${AXES[i].n}</b>${AXES[i].tip}</div>`).join("");
+}
+
+/* ================= SUAVIZAÇÃO: reveal ao rolar ================= */
+const io=("IntersectionObserver" in window)
+  ? new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}
+    }),{root:$("main"),rootMargin:"0px 0px -8% 0px"})
+  : null;
+function observeReveals(){
+  if(!io)return;
+  document.querySelectorAll(".pcard,.acc,.entry,.week,.glabel,.radar-card").forEach(el=>{
+    if(!el.classList.contains("reveal")&&!el.classList.contains("in")){
+      el.classList.add("reveal");io.observe(el);
+    }
+  });
+}
+new MutationObserver(()=>requestAnimationFrame(observeReveals))
+  .observe($("main"),{childList:true,subtree:true});
+
+/* ================= WELCOME / INIT ================= */
+if(!store.get("welcomed",false))$("welcome").classList.add("show");
+$("enter").addEventListener("click",()=>{
+  store.set("welcomed",true);
+  $("welcome").classList.remove("show");
+  chime(440);
+});
+renderHoje();renderPraticas();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();observeReveals();
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+</script>
+</body>
+</html>

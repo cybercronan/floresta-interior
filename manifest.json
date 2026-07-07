@@ -1,0 +1,20 @@
+{
+  "name": "Floresta Interior — Banhos de Floresta guiados",
+  "short_name": "Floresta Interior",
+  "description": "Banhos de floresta guiados, jornada de 21 dias de reconexão e diário da natureza. Por Mestra Natureza.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF9EE",
+  "theme_color": "#233715",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23233715'/%3E%3Cpath d='M256 400 C256 272 272 192 368 112 C368 240 336 336 256 400 Z' fill='%23DCBD57'/%3E%3Cpath d='M256 400 C256 304 240 240 144 176 C152 272 192 352 256 400 Z' fill='%23E8F8AF' opacity='.85'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
