@@ -1,4 +1,4 @@
-const CACHE = "floresta-interior-v4";
+const CACHE = "floresta-interior-v5";
 const ASSETS = ["./", "./index.html", "./manifest.json"];
 
 self.addEventListener("install", (e) => {
@@ -24,9 +24,10 @@ self.addEventListener("fetch", (e) => {
         hit ||
         fetch(e.request)
           .then((res) => {
-            const copy = res.clone();
-            if (e.request.method === "GET" && res.ok) {
-              caches.open(CACHE).then((c) => c.put(e.request, copy));
+            // só cachear respostas completas (200); 206/opaque quebram o Cache API
+            if (e.request.method === "GET" && res.status === 200) {
+              const copy = res.clone();
+              caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
             }
             return res;
           })
