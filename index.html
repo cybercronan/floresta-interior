@@ -84,8 +84,8 @@ button{font-family:inherit;color:inherit;background:none;border:none;cursor:poin
 .greet{font-size:34px;margin-top:2px}
 .hero{position:relative;margin-top:18px;border-radius:26px;overflow:hidden;background:
   radial-gradient(140% 120% at 85% -20%, #3a5c22 0%, var(--pine) 45%, var(--deep) 100%);color:var(--paper);padding:24px 22px 22px;box-shadow:0 18px 40px rgba(18,35,2,.35)}
-.hero::after{content:"";position:absolute;inset:0;opacity:.25;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23E8F8AF' stroke-width='1.1' stroke-linecap='round' opacity='.8'%3E%3Cpath d='M158 210 C158 150 162 110 196 70'/%3E%3Cpath d='M158 190 C138 182 124 168 119 148 M158 190 C178 182 192 168 197 148'/%3E%3Cpath d='M158 158 C142 151 131 139 128 122 M158 158 C174 151 185 139 188 122'/%3E%3Cpath d='M158 128 C146 122 138 112 136 98 M158 128 C170 122 178 112 180 98'/%3E%3C/g%3E%3C/svg%3E") no-repeat right -20px bottom -30px/240px;}
+.hero::after{content:"";position:absolute;right:-30px;bottom:-38px;width:215px;height:235px;opacity:.9;pointer-events:none;transform:rotate(9deg);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 240'%3E%3Cdefs%3E%3Cfilter id='wc' x='-40%25' y='-40%25' width='180%25' height='180%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='14'/%3E%3CfeGaussianBlur stdDeviation='1.6'/%3E%3C/filter%3E%3ClinearGradient id='lg' x1='0.1' y1='1' x2='0.7' y2='0'%3E%3Cstop offset='0' stop-color='%233F7652' stop-opacity='.55'/%3E%3Cstop offset='.55' stop-color='%23A9C97E' stop-opacity='.42'/%3E%3Cstop offset='1' stop-color='%23E8F8AF' stop-opacity='.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg filter='url(%23wc)'%3E%3Cpath d='M108 228 C58 178 48 108 76 58 C94 26 126 12 148 20 C158 66 154 130 128 178 C120 194 114 210 108 228 Z' fill='url(%23lg)'/%3E%3Cpath d='M115 222 C65 172 55 102 83 52 C101 20 133 6 155 14 C165 60 161 124 135 172 C127 188 121 204 115 222 Z' fill='%23DCBD57' opacity='.12'/%3E%3C/g%3E%3Cpath d='M110 220 C106 168 112 104 142 30' stroke='%23FFF9EE' stroke-width='1.6' fill='none' opacity='.32' stroke-linecap='round'/%3E%3Cpath d='M116 178 C102 168 92 156 87 140 M122 144 C110 134 102 122 100 106 M130 108 C120 99 115 88 115 74 M137 74 C130 67 127 58 128 46' stroke='%23FFF9EE' stroke-width='1' fill='none' opacity='.22' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;}
 .hero .tag{display:inline-flex;align-items:center;gap:7px;background:rgba(232,248,175,.14);border:1px solid rgba(232,248,175,.35);color:var(--leaf);border-radius:999px;padding:5px 12px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .hero h2{color:var(--paper);font-size:27px;margin:14px 0 6px}
 .hero p{color:var(--cream-80);font-size:14.5px;line-height:1.55;max-width:34ch}
@@ -241,6 +241,49 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .reveal.in{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
 .stepin{animation:stepin .5s cubic-bezier(.2,.7,.2,1) both}
 @keyframes stepin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* ---------- MISSÃO DO DIA ---------- */
+.mission{position:relative;margin-top:14px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:18px 18px 16px;overflow:hidden}
+.mission.done{border-color:rgba(164,127,4,.45);background:linear-gradient(180deg,var(--paper-2),rgba(220,189,87,.1))}
+.m-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.m-tag{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);background:rgba(63,118,82,.12);border-radius:99px;padding:4px 10px}
+.m-text{font-family:var(--serif);font-size:18px;line-height:1.42}
+.m-done{width:100%;margin-top:14px;padding:12px;font-size:13.5px}
+.m-done.ok{background:var(--pine);color:var(--leaf);border-color:var(--pine)}
+/* ---------- ÁRVORE INTERIOR ---------- */
+.tree-card{display:flex;gap:16px;align-items:center;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:16px}
+.tree-svg{width:112px;flex:none}
+.tree-svg svg{width:100%;display:block}
+.tree-svg g{transition:opacity 1.2s ease}
+.tree-svg g.off{opacity:0}
+.tree-info{flex:1;min-width:0}
+.t-sub{font-size:12px;color:var(--ink-60);line-height:1.45;font-style:italic;font-family:var(--serif)}
+.t-stats{margin-top:9px;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--moss)}
+/* ---------- REFLEXÕES (podcast) ---------- */
+.rcard{position:relative;display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:var(--r);padding:15px 16px;margin-bottom:12px;transition:transform .18s ease}
+.rcard:active{transform:scale(.985)}
+.rcard .ic{width:44px;height:44px;flex:none;border-radius:50%;background:var(--pine);display:flex;align-items:center;justify-content:center}
+.rcard .ic svg{width:18px;height:18px}
+.rcard b{font-family:var(--serif);font-weight:500;font-size:15.5px;display:block}
+.rcard .sub{font-size:11.5px;color:var(--ink-60);margin-top:2px}
+.rcard.locked{opacity:.55}
+.rcard.locked .ic{background:var(--paper-3)}
+.rcard .ep{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold);min-width:26px}
+/* ---------- PLAYER DE ÁUDIO ---------- */
+.aplayer{display:flex;align-items:center;gap:14px;margin-top:18px;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:18px;padding:14px 16px}
+.a-btn{width:54px;height:54px;flex:none;border-radius:50%;background:var(--pine);color:var(--leaf);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(18,35,2,.3)}
+.a-btn svg{width:20px;height:20px;fill:currentColor}
+.a-track{flex:1;min-width:0}
+.a-track input[type=range]{height:5px;margin:0}
+.a-track input[type=range]::-webkit-slider-thumb{width:16px;height:16px;border-width:2.5px}
+.a-time{display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--ink-60);margin-top:6px}
+/* ---------- MODO DESAPARECER ---------- */
+.player .pl-top,.player .pl-mid,.player .pl-bottom,.player .pl-dots{transition:opacity 3s ease}
+.player.faded .pl-top,.player.faded .pl-mid,.player.faded .pl-bottom,.player.faded .pl-dots{opacity:.04}
+.player.faded{cursor:pointer}
+/* ---------- TOAST ---------- */
+#toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:12px 22px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:90}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.card-btn{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.06em;margin-right:10px}
 /* ---------- NAV ---------- */
 nav{position:absolute;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:space-around;align-items:center;background:rgba(255,249,238,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--ink-15);padding:10px 8px calc(12px + env(safe-area-inset-bottom))}
 @media(min-width:520px){nav{position:absolute}}
@@ -352,6 +395,15 @@ input[type=text]:focus{border-color:var(--moss)}
           </button>
         </div>
 
+        <div class="mission" id="mission-card">
+          <div class="m-head">
+            <span class="kicker" style="margin:0" id="m-cat">Missão de hoje</span>
+            <span class="m-tag" id="m-personal" style="display:none">pelo seu radar</span>
+          </div>
+          <p class="m-text" id="m-text"></p>
+          <button class="btn ghost m-done" id="m-done">Cumpri a missão</button>
+        </div>
+
         <div class="duo">
           <button class="tile" id="tile-breath">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg></div>
@@ -403,6 +455,7 @@ input[type=text]:focus{border-color:var(--moss)}
       </div>
       <div class="divider"><svg viewBox="0 0 24 24" fill="#A47F04"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg></div>
       <div class="sec" id="plist"></div>
+      <div id="rlist"></div>
     </section>
 
     <!-- ============ JORNADA ============ -->
@@ -423,6 +476,18 @@ input[type=text]:focus{border-color:var(--moss)}
         <h2>O vocabulário<br>das suas sensações</h2>
       </div>
       <div class="sec" style="margin-top:18px">
+        <div class="tree-card">
+          <div class="tree-svg" id="tree-svg"></div>
+          <div class="tree-info">
+            <p class="kicker" style="margin-bottom:2px">Árvore interior</p>
+            <h3 id="tree-stage" style="font-size:18px">Semente</h3>
+            <p class="t-sub" id="tree-sub"></p>
+            <div style="height:5px;background:var(--ink-08);border-radius:99px;overflow:hidden;margin-top:9px"><i id="tree-bar" style="display:block;height:100%;background:linear-gradient(90deg,var(--moss),var(--gold-2));width:0%;transition:width .8s ease"></i></div>
+            <div class="t-stats" id="tree-stats"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec" style="margin-top:14px">
         <div class="radar-card">
           <p class="kicker">Radar da conexão</p>
           <h3 style="font-size:17px">Seu encontro em seis eixos</h3>
@@ -535,6 +600,28 @@ input[type=text]:focus{border-color:var(--moss)}
 <div class="modal-bg" id="day-ov">
   <div class="modal" id="day-modal"></div>
 </div>
+
+<!-- ============ REFLEXÕES: PLAYER DE ÁUDIO ============ -->
+<div class="modal-bg" id="audio-ov">
+  <div class="modal">
+    <div class="handle"></div>
+    <p class="kicker" id="a-kicker">Reflexão · Episódio 1</p>
+    <h3 id="a-title" style="padding-right:20px"></h3>
+    <p class="sub" style="margin-top:6px">Para ouvir no caminho, na varanda, de olhos fechados — plantando a próxima imersão.</p>
+    <div class="aplayer">
+      <button class="a-btn" id="a-play" aria-label="Tocar ou pausar">
+        <svg id="a-ic" viewBox="0 0 24 24"><path d="M7 4.5 L19 12 L7 19.5 Z"/></svg>
+      </button>
+      <div class="a-track">
+        <input type="range" id="a-seek" min="0" max="1000" value="0" aria-label="Posição do áudio">
+        <div class="a-time"><span id="a-cur">0:00</span><span id="a-dur">--:--</span></div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:11.5px;color:var(--ink-40);text-align:center">Sua posição fica guardada para continuar depois.</p>
+    <button style="width:100%;margin-top:10px;padding:12px;color:var(--ink-40);font-weight:700;font-size:12.5px" id="a-close">Fechar</button>
+  </div>
+</div>
+<div id="toast"></div>
 
 <!-- ============ BANHO SOB MEDIDA ============ -->
 <div class="modal-bg" id="build-ov">
@@ -713,6 +800,93 @@ const AXES=[
  {n:"Respeito",q:"Pedi licença e não deixei rastros?",tip:"Peça licença ao chegar, toque com delicadeza, nada de colher por capricho — e faça o check-out ecológico ao sair. Preservar é a gratidão mais concreta."},
  {n:"Gratidão",q:"Fechei o ciclo com um gesto?",tip:"Encerre sempre com um signo: uma palavra dita baixinho, a mão pousada no tronco, uma respiração longa. O símbolo sela a experiência na memória — e a faz durar."}];
 
+/* Missões perceptivas — banco de exercícios fenomenológicos da Mestra */
+const MISSIONS=[
+ {c:"Ver",t:"Encontre cinco sombras com formatos completamente diferentes."},
+ {c:"Ver",t:"Descubra uma cor que você nunca havia percebido neste lugar."},
+ {c:"Ver",t:"Durante três minutos, observe apenas o que está acima da altura dos seus olhos."},
+ {c:"Ver",t:"Procure algo minúsculo que normalmente passaria despercebido."},
+ {c:"Ver",t:"Caminhe procurando apenas formas circulares."},
+ {c:"Ver",t:"Encontre algo que pareça muito velho — e algo que pareça recém-nascido."},
+ {c:"Ver",t:"Descubra onde a luz muda mais rapidamente."},
+ {c:"Ouvir",t:"Conte quantas camadas sonoras existem ao mesmo tempo."},
+ {c:"Ouvir",t:"Descubra o som mais distante que você consegue perceber."},
+ {c:"Ouvir",t:"Procure um silêncio escondido entre dois sons."},
+ {c:"Ouvir",t:"Feche os olhos e gire lentamente até encontrar a direção mais sonora."},
+ {c:"Ouvir",t:"Caminhe guiada/o apenas pelos sons durante dois minutos."},
+ {c:"Ouvir",t:"Identifique um som contínuo e um som imprevisível."},
+ {c:"Ouvir",t:"Ouça até perceber um som que só apareceu uma única vez."},
+ {c:"Tato",t:"Toque três superfícies com temperaturas diferentes."},
+ {c:"Tato",t:"Descubra algo surpreendentemente macio."},
+ {c:"Tato",t:"Procure a textura mais antiga que encontrar."},
+ {c:"Tato",t:"Feche os olhos e reconheça um objeto apenas pelo toque."},
+ {c:"Tato",t:"Compare a pele de uma folha jovem com a de uma folha mais velha."},
+ {c:"Tato",t:"Apoie as mãos numa pedra durante um minuto inteiro."},
+ {c:"Tato",t:"Passe três minutos com a textura da casca de uma árvore: quantos padrões diferentes você percebe?"},
+ {c:"Olfato",t:"Descubra onde o cheiro muda ao caminhar."},
+ {c:"Olfato",t:"Compare o aroma do solo em dois lugares diferentes."},
+ {c:"Olfato",t:"Encontre um cheiro que desaparece rapidamente."},
+ {c:"Olfato",t:"Inspire profundamente perto de uma árvore e depois numa clareira."},
+ {c:"Olfato",t:"Procure o cheiro mais inesperado do percurso."},
+ {c:"Olfato",t:"Cheire uma folha caída e depois uma folha viva: qual mudou mais o seu estado interno?"},
+ {c:"Movimento",t:"Caminhe tão devagar que perceba cada transferência de peso entre os pés."},
+ {c:"Movimento",t:"Caminhe por cinco minutos sem ultrapassar nenhum ser vivo."},
+ {c:"Movimento",t:"Diminua sua velocidade pela metade sem perder o equilíbrio."},
+ {c:"Movimento",t:"Faça uma curva sempre que algo chamar espontaneamente a sua atenção."},
+ {c:"Movimento",t:"Escolha um caminho sem pensar; apenas siga sua curiosidade."},
+ {c:"Corpo",t:"Em que parte do corpo você sente mais intensamente este lugar?"},
+ {c:"Corpo",t:"Pare por um minuto: sua respiração mudou desde o início?"},
+ {c:"Corpo",t:"Caminhe observando apenas os seus ombros."},
+ {c:"Corpo",t:"Perceba em que momento o seu corpo relaxa sem você decidir."},
+ {c:"Corpo",t:"Observe como os seus pés encontram o chão."},
+ {c:"Relação",t:"Escolha um único ser vivo para acompanhar durante cinco minutos."},
+ {c:"Relação",t:"Imagine como este lugar seria sem seres humanos."},
+ {c:"Relação",t:"Descubra quem parece estar observando você."},
+ {c:"Relação",t:"Procure um lugar que pareça acolher outros seres."},
+ {c:"Relação",t:"Encontre um pequeno refúgio utilizado por algum animal."},
+ {c:"Fenomenologia",t:"Durante cinco minutos, não dê nome a nada."},
+ {c:"Fenomenologia",t:"Descreva mentalmente apenas cores e movimentos."},
+ {c:"Fenomenologia",t:"Observe sem perguntar «o que é»."},
+ {c:"Fenomenologia",t:"Encontre algo que muda enquanto você observa."},
+ {c:"Fenomenologia",t:"Descubra algo que parecia imóvel — mas não está."},
+ {c:"Imaginação",t:"Se este lugar tivesse um ritmo musical, qual seria?"},
+ {c:"Imaginação",t:"Que palavra este lugar inventaria, se pudesse falar?"},
+ {c:"Imaginação",t:"Que memória este caminho despertou sem você esperar?"},
+ {c:"Imaginação",t:"Escolha um elemento da paisagem e imagine sua história desde antes dos seres humanos."},
+ {c:"Imaginação",t:"Antes de partir, pergunte em silêncio: «o que este lugar me ensinou hoje?» — e acolha a primeira resposta, sem julgá-la."}];
+
+/* Missões sazonais — a floresta muda com o ano */
+const SEASONAL={
+ ver:[{c:"Verão",t:"Encontre onde a sombra é mais generosa e agradeça, em pensamento, a árvore que a fabrica."},
+      {c:"Verão",t:"Descubra o que floresce no calor — e o que se recolhe dele."}],
+ out:[{c:"Outono",t:"Recolha três folhas caídas de cores diferentes: o outono é a paleta da entrega."},
+      {c:"Outono",t:"Procure sementes viajantes, prontas para partir com o vento."}],
+ inv:[{c:"Inverno",t:"Observe os galhos nus: o esqueleto da floresta também é belo."},
+      {c:"Inverno",t:"Encontre um ser em pausa — a vida também descansa à vista de todos."}],
+ pri:[{c:"Primavera",t:"Conte quantas flores diferentes se abriram por aqui esta semana."},
+      {c:"Primavera",t:"Encontre um broto recém-nascido e volte a visitá-lo, nem que seja em pensamento."}]};
+function season(){const m=new Date().getMonth();return m===11||m<2?"ver":m<5?"out":m<8?"inv":"pri"}
+
+/* Radar → categorias de missão (personalização) */
+const AXMAP=[["Fenomenologia","Corpo"],["Ver","Ouvir","Tato","Olfato"],["Movimento"],["Relação"],["Relação","Fenomenologia"],["Imaginação"]];
+
+/* Reflexões da Mestra — episódios do podcast (desbloqueio por crescimento) */
+const REFLEX=[
+ {id:"ep001",n:1,t:"Vida Dentro, Vida ao Redor",min:18,need:0},
+ {id:"ep002",n:2,t:"Por Que e Como se Conectar com a Natureza",min:21,need:5},
+ {id:"ep003",n:3,t:"O Momento Presente",min:18,need:12},
+ {id:"ep004",n:4,t:"Como Aprender com a Natureza",min:17,need:25}];
+
+/* Árvore Interior — fases de crescimento */
+const TREE=[
+ {n:"Semente",p:0,s:"Tudo o que a floresta será já dorme aqui."},
+ {n:"Broto",p:5,s:"As primeiras folhas se abrem para a luz."},
+ {n:"Muda",p:12,s:"Raízes jovens encontram água."},
+ {n:"Árvore Jovem",p:25,s:"Cada exercício amplia um galho."},
+ {n:"Copa Aberta",p:45,s:"Sua copa já dá sombra e abrigo."},
+ {n:"Florada",p:70,s:"Cada registro vira flor."},
+ {n:"Frutos",p:100,s:"Você alimenta a floresta ao redor."}];
+
 /* Jornada de 21 dias */
 const JOURNEY=[
  {w:1,t:"Chegar e pedir licença",m:10,d:"Escolha seu lugar de natureza possível — parque, praça, quintal. Chegue em silêncio, peça licença às vidas que ali habitam e apenas permaneça por dez minutos, sem tarefa alguma."},
@@ -759,6 +933,9 @@ let journal=store.get("journal",[]);
 let jdone=store.get("journey",[]);
 let streak=store.get("streak",{count:0,last:null});
 let muted=store.get("muted",false);
+let stats=store.get("stats",{sessions:0,missions:0});
+let missions=store.get("missions",{days:{},count:0});
+let apos=store.get("apos",{});
 const $=id=>document.getElementById(id);
 const todayISO=()=>new Date().toISOString().slice(0,10);
 
@@ -795,6 +972,24 @@ function chirp(){
     g.gain.exponentialRampToValueAtTime(.0001,t+.22);
     o.connect(g).connect(ac.destination);o.start(t);o.stop(t+.25);
   }catch(e){}
+}
+
+/* ================= AMBIENTE SONORO (sons reais, suavizados) ================= */
+const AMB={abertura:"audio/ui/abertura.mp3",folhas:"audio/ui/folhas-suaves.mp3",passaro:"audio/ui/passaro-suave.mp3"};
+function playAmb(k,v=1){
+  if(muted)return;
+  try{const a=new Audio(AMB[k]);a.volume=Math.min(1,v);a.play().catch(()=>{})}catch(e){}
+}
+let ambOnce=false;
+document.addEventListener("pointerdown",()=>{
+  if(!ambOnce){ambOnce=true;if(store.get("welcomed",false))playAmb("abertura",.7)}
+},{once:true});
+
+/* ================= TOAST ================= */
+let toastT=null;
+function toast(msg){
+  const t=$("toast");t.textContent=msg;t.classList.add("show");
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600);
 }
 
 /* ================= NAV ================= */
@@ -869,7 +1064,7 @@ function openPractice(p){
   $("pl-leaves").innerHTML=[...Array(7)].map((_,i)=>`<i style="left:${8+i*13}%;animation-duration:${13+(i*2.7)%9}s;animation-delay:${-i*3.1}s"></i>`).join("");
   $("player-ov").classList.add("show");
   document.body.style.overflow="hidden";
-  showStep();startTimer();chime(440);
+  showStep();startTimer();playAmb("folhas",.75);wakePlayer();
 }
 function showStep(){
   const st=P.p.steps[P.i];
@@ -914,6 +1109,8 @@ function prevStep(){
 }
 function closePlayer(){
   clearInterval(P.timer);
+  clearTimeout(idleT);
+  plBox.classList.remove("faded");
   $("player-ov").classList.remove("show");
   document.body.style.overflow="";
 }
@@ -934,7 +1131,7 @@ $("pl-mute").addEventListener("click",()=>{
 /* ================= COMPLETION ================= */
 let doneMood=null;
 function openDone(){
-  chime(659.25);
+  playAmb("passaro",.85);
   doneMood=null;$("grat").value="";
   $("done-sub").innerHTML=(P.count>0?`Você percebeu <em>${P.count} ${P.count===1?"voz":"vozes"}</em> — a escuta está despertando. `:"Prática concluída. ")+"Antes de partir, o círculo de gratidão: <em>uma palavra</em> pelo que você recebeu.";
   $("done-moods").innerHTML=MOODS.map((m,i)=>moodBtn(m,i)).join("");
@@ -966,9 +1163,10 @@ $("done-save").addEventListener("click",()=>{
     journal.unshift({d:new Date().toISOString(),mood:doneMood,chips:ch,text:(g?("Palavra de gratidão: «"+g+"»"):"Prática concluída")+" — "+P.p.title+"."});
     store.set("journal",journal);renderEntries();
   }
-  $("done-ov").classList.remove("show");renderHoje();openEval();
+  stats.sessions++;store.set("stats",stats);
+  $("done-ov").classList.remove("show");renderHoje();renderTree();renderReflex();openEval();
 });
-$("done-skip").addEventListener("click",()=>{bumpStreak();$("done-ov").classList.remove("show");renderHoje();openEval()});
+$("done-skip").addEventListener("click",()=>{bumpStreak();stats.sessions++;store.set("stats",stats);$("done-ov").classList.remove("show");renderHoje();renderTree();renderReflex();openEval()});
 
 /* ================= JORNADA ================= */
 function renderJourney(){
@@ -1000,7 +1198,7 @@ function openDay(i){
   const dd=$("day-done");
   if(dd)dd.addEventListener("click",()=>{
     jdone[i]=true;store.set("journey",jdone);bumpStreak();chime(659.25);
-    $("day-ov").classList.remove("show");renderJourney();renderHoje();
+    $("day-ov").classList.remove("show");renderJourney();renderHoje();renderTree();renderReflex();
   });
   $("day-close").addEventListener("click",()=>$("day-ov").classList.remove("show"));
 }
@@ -1026,7 +1224,7 @@ $("j-save").addEventListener("click",()=>{
   journal.unshift({d:new Date().toISOString(),mood:selMood,chips:[...selChips],text:t});
   store.set("journal",journal);
   $("j-text").value="";selChips=new Set();selMood=null;
-  renderDiaryForm();renderEntries();chime(587.33);
+  renderDiaryForm();renderEntries();renderTree();chime(587.33);
   $("main").scrollTo({top:$("entries").offsetTop-90,behavior:"smooth"});
 });
 function renderEntries(){
@@ -1040,13 +1238,14 @@ function renderEntries(){
     const dt=new Date(e.d).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
     return `<div class="entry">
       <div class="eh"><span class="ed">${dt}${e.mood!==null&&e.mood!==undefined?" · "+MOODS[e.mood][0]:""}</span>
-      <button class="del" data-i="${i}">remover</button></div>
+      <span><button class="card-btn" data-c="${i}">card ✦</button><button class="del" data-i="${i}">remover</button></span></div>
       ${e.text?`<p>${e.text.replace(/</g,"&lt;")}</p>`:""}
       ${e.chips&&e.chips.length?`<div class="echips">${e.chips.map(c=>`<i>${c}</i>`).join("")}</div>`:""}
     </div>`}).join("");
   document.querySelectorAll(".entry .del").forEach(b=>b.addEventListener("click",()=>{
-    journal.splice(+b.dataset.i,1);store.set("journal",journal);renderEntries();
+    journal.splice(+b.dataset.i,1);store.set("journal",journal);renderEntries();renderTree();
   }));
+  document.querySelectorAll(".entry .card-btn").forEach(b=>b.addEventListener("click",()=>shareCard(journal[+b.dataset.c])));
 }
 
 /* ================= SABER ================= */
@@ -1139,7 +1338,7 @@ $("eval-save").addEventListener("click",()=>{
   evals.unshift({d:new Date().toISOString(),s:[...evalScores]});
   if(evals.length>60)evals.length=60;
   store.set("evals",evals);
-  renderRadar();chime(587.33);
+  renderRadar();renderMission();renderTree();renderReflex();chime(587.33);
   $("eval-ov").classList.remove("show");
   goto("diario");$("main").scrollTo({top:0});
 });
@@ -1180,6 +1379,223 @@ function renderRadar(){
   tips.innerHTML=order.slice(0,2).map(([v,i])=>`<div class="tipbox"><b>Para crescer em ${AXES[i].n}</b>${AXES[i].tip}</div>`).join("");
 }
 
+/* ================= MISSÃO DO DIA ================= */
+function seededShuffle(n,seed){
+  const a=[...Array(n).keys()];let s=seed|0;
+  const rnd=()=>{s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+  for(let i=n-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+function currentMission(){
+  const now=new Date(),doy=Math.floor((now-new Date(now.getFullYear(),0,0))/864e5);
+  const pool=MISSIONS.concat(SEASONAL[season()]);
+  let idx=null,personal=null;
+  if(evals.length){
+    const n=Math.min(evals.length,5);
+    const avg=AXES.map((_,i)=>evals.slice(0,n).reduce((a,e)=>a+e.s[i],0)/n);
+    let w=0;avg.forEach((v,i)=>{if(v<avg[w])w=i});
+    const cats=AXMAP[w]||[];
+    const sub=pool.map((_,j)=>j).filter(j=>cats.includes(pool[j].c));
+    if(sub.length){idx=sub[doy%sub.length];personal=AXES[w].n}
+  }
+  if(idx===null){const order=seededShuffle(pool.length,now.getFullYear()*7+3);idx=order[doy%pool.length]}
+  return {m:pool[idx],personal};
+}
+function renderMission(){
+  const {m,personal}=currentMission();
+  $("m-cat").textContent="Missão de hoje · "+m.c;
+  $("m-text").textContent=m.t;
+  const tag=$("m-personal");
+  if(personal){tag.style.display="inline-block";tag.textContent="seu radar pede "+personal}
+  else tag.style.display="none";
+  const done=!!missions.days[todayISO()];
+  $("mission-card").classList.toggle("done",done);
+  const b=$("m-done");
+  b.classList.toggle("ok",done);b.disabled=done;
+  b.textContent=done?"✓ Vivida hoje — amanhã nasce outra":"Cumpri a missão";
+}
+$("m-done").addEventListener("click",()=>{
+  missions.days[todayISO()]=true;missions.count++;store.set("missions",missions);
+  playAmb("passaro",.7);
+  renderMission();renderTree();renderReflex();
+  toast("Um galho novo cresceu na sua árvore");
+});
+
+/* ================= ÁRVORE INTERIOR ================= */
+function growthPts(){return stats.sessions*3+missions.count*2+jdone.filter(Boolean).length*2+journal.length+evals.length}
+function treeStage(p){let s=0;TREE.forEach((t,i)=>{if(p>=t.p)s=i});return s}
+function treeSVG(st){
+  const off=k=>st>=k?"":' class="off"';
+  return `<svg viewBox="0 0 120 140">
+   <ellipse cx="60" cy="127" rx="36" ry="6" fill="rgba(63,118,82,.16)"/>
+   <g${st>=1?' class="off"':''}><ellipse cx="60" cy="121" rx="5" ry="7" fill="#A47F04"/><path d="M60 114 C60 110 62 107 65 105" stroke="#3F7652" stroke-width="1.6" fill="none" stroke-linecap="round"/></g>
+   <g${off(1)}><path d="M60 126 C52 131 45 133 37 132 M60 126 C68 131 75 133 83 132" stroke="#55401f" stroke-width="1.6" fill="none" opacity=".6" stroke-linecap="round"/></g>
+   <g${off(3)}><path d="M60 127 C55 133 48 136 40 137 M60 127 C65 133 72 136 80 137 M60 127 C59 133 57 136 52 138 M60 127 C62 133 65 136 70 138" stroke="#55401f" stroke-width="1.4" fill="none" opacity=".5" stroke-linecap="round"/></g>
+   <g${st>=1&&st<3?"":' class="off"'}><path d="M60 124 C60 114 59 108 60 100" stroke="#3F7652" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M60 108 C55 105 51 100 50 94 C56 95 59 99 60 104 Z" fill="#3F7652"/><path d="M60 104 C65 101 68 96 68.5 90 C63 91 60.5 95 60 100 Z" fill="#5d9b6f"/></g>
+   <g${st===2?"":' class="off"'}><path d="M60 100 C60 94 59 90 60 84" stroke="#3F7652" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M60 92 C54 89 50 84 49 78 C55 79 58 83 60 88 Z" fill="#5d9b6f"/><path d="M60 88 C66 85 69 80 70 74 C64 75 61 79 60 84 Z" fill="#3F7652"/></g>
+   <g${off(3)}><path d="M56 124 C57 104 55 88 58 68 L62 68 C65 88 63 104 64 124 Z" fill="#55401f"/><path d="M59 86 C52 80 47 74 45 66 M61 78 C68 73 73 67 75 60 M60 70 C60 62 60 56 60 50" stroke="#55401f" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+   <g${off(3)}><circle cx="44" cy="60" r="12" fill="#3F7652"/><circle cx="76" cy="55" r="13" fill="#3F7652"/><circle cx="60" cy="44" r="14" fill="#4f8f63"/></g>
+   <g${off(4)}><circle cx="33" cy="52" r="11" fill="#3F7652"/><circle cx="88" cy="48" r="11" fill="#3F7652"/><circle cx="48" cy="36" r="12" fill="#4f8f63"/><circle cx="72" cy="33" r="12" fill="#4f8f63"/><circle cx="60" cy="26" r="11" fill="#5d9b6f"/><circle cx="60" cy="45" r="16" fill="#4f8f63" opacity=".8"/></g>
+   <g${off(5)}><circle cx="42" cy="30" r="2.3" fill="#E8F8AF"/><circle cx="63" cy="18" r="2.3" fill="#E8F8AF"/><circle cx="82" cy="36" r="2.3" fill="#E8F8AF"/><circle cx="30" cy="46" r="2.3" fill="#E8F8AF"/><circle cx="55" cy="38" r="2.3" fill="#E8F8AF"/><circle cx="74" cy="24" r="2.3" fill="#E8F8AF"/><circle cx="90" cy="55" r="2.3" fill="#E8F8AF"/></g>
+   <g${off(6)}><circle cx="48" cy="48" r="3.4" fill="#DCBD57" stroke="#A47F04" stroke-width=".8"/><circle cx="70" cy="42" r="3.4" fill="#DCBD57" stroke="#A47F04" stroke-width=".8"/><circle cx="36" cy="58" r="3.4" fill="#DCBD57" stroke="#A47F04" stroke-width=".8"/><circle cx="84" cy="58" r="3.4" fill="#DCBD57" stroke="#A47F04" stroke-width=".8"/><circle cx="58" cy="32" r="3.4" fill="#DCBD57" stroke="#A47F04" stroke-width=".8"/></g>
+  </svg>`;
+}
+function renderTree(){
+  const p=growthPts(),st=treeStage(p);
+  $("tree-svg").innerHTML=treeSVG(st);
+  $("tree-stage").textContent=TREE[st].n;
+  $("tree-sub").textContent=TREE[st].s;
+  const next=TREE[st+1];
+  $("tree-bar").style.width=next?Math.min(100,Math.round((p-TREE[st].p)/(next.p-TREE[st].p)*100))+"%":"100%";
+  $("tree-stats").textContent=p+" pts · "+stats.sessions+" banhos · "+missions.count+" missões · "+journal.length+" registros"+(next?" — "+next.n+" aos "+next.p+" pts":"");
+}
+
+/* ================= REFLEXÕES DA MESTRA ================= */
+const ICON_PLAY='<svg viewBox="0 0 24 24" fill="#E8F8AF"><path d="M8.5 5 L18.5 12 L8.5 19 Z"/></svg>';
+const ICON_LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="rgba(29,14,3,.45)" stroke-width="1.8" stroke-linecap="round"><rect x="5.5" y="10.5" width="13" height="9" rx="2.5"/><path d="M8.5 10.5 V8 a3.5 3.5 0 0 1 7 0 v2.5"/></svg>';
+function renderReflex(){
+  const p=growthPts();
+  $("rlist").innerHTML=
+   `<div class="glabel">Reflexões da Mestra · podcast</div>
+    <p style="font-size:13px;color:var(--ink-60);line-height:1.55;margin:-4px 0 14px">Para os dias entre banhos: reflexões de ecofilosofia e ecopsicologia que mantêm a conexão viva. Novos episódios se abrem conforme sua árvore cresce.</p>`+
+   REFLEX.map(r=>{
+     const locked=p<r.need;
+     const fase=(TREE.find(t=>t.p===r.need)||TREE[0]).n;
+     return `<button class="rcard ${locked?"locked":""}" data-id="${r.id}" ${locked?"disabled":""}>
+      <span class="ep">${String(r.n).padStart(2,"0")}</span>
+      <span class="ic">${locked?ICON_LOCK:ICON_PLAY}</span>
+      <span style="flex:1"><b>${r.t}</b><span class="sub">${locked?"Desbloqueia na fase "+fase+" · faltam "+(r.need-p)+" pts":"≈ "+r.min+" min · com a voz da Mestra"}</span></span>
+     </button>`}).join("");
+  document.querySelectorAll(".rcard:not(.locked)").forEach(b=>b.addEventListener("click",()=>{
+    const r=REFLEX.find(x=>x.id===b.dataset.id);if(r)openAudio(r);
+  }));
+}
+const aud=new Audio();let curEp=null,seekDrag=false,aposT=0;
+function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}
+function setPlayIcon(pl){$("a-ic").innerHTML=pl?'<rect x="6" y="5" width="4.4" height="14" rx="1.4"/><rect x="13.6" y="5" width="4.4" height="14" rx="1.4"/>':'<path d="M8.5 5 L18.5 12 L8.5 19 Z"/>'}
+function saveApos(){if(curEp){apos[curEp.id]=aud.currentTime;store.set("apos",apos)}}
+function openAudio(r){
+  curEp=r;
+  $("a-kicker").textContent="Reflexão · Episódio "+r.n;
+  $("a-title").textContent=r.t;
+  aud.src="audio/reflexoes/"+r.id+".mp3";
+  aud.currentTime=apos[r.id]||0;
+  $("a-cur").textContent=fmt(apos[r.id]||0);
+  $("a-dur").textContent="≈ "+r.min+" min";
+  $("a-seek").value=0;
+  setPlayIcon(false);
+  $("audio-ov").classList.add("show");
+}
+aud.addEventListener("loadedmetadata",()=>{$("a-dur").textContent=fmt(aud.duration);if(apos[curEp&&curEp.id])$("a-seek").value=aud.currentTime/aud.duration*1000});
+aud.addEventListener("timeupdate",()=>{
+  if(seekDrag)return;
+  $("a-cur").textContent=fmt(aud.currentTime);
+  if(aud.duration)$("a-seek").value=aud.currentTime/aud.duration*1000;
+  if(Date.now()-aposT>5000){aposT=Date.now();saveApos()}
+});
+aud.addEventListener("ended",()=>{setPlayIcon(false);if(curEp){delete apos[curEp.id];store.set("apos",apos)}toast("Reflexão concluída — leve-a para o seu dia")});
+$("a-play").addEventListener("click",()=>{
+  if(aud.paused){aud.play().catch(()=>{});setPlayIcon(true)}
+  else{aud.pause();setPlayIcon(false);saveApos()}
+});
+$("a-seek").addEventListener("input",()=>{seekDrag=true;if(aud.duration)$("a-cur").textContent=fmt($("a-seek").value/1000*aud.duration)});
+$("a-seek").addEventListener("change",()=>{if(aud.duration)aud.currentTime=$("a-seek").value/1000*aud.duration;seekDrag=false});
+$("a-close").addEventListener("click",()=>{aud.pause();saveApos();setPlayIcon(false);$("audio-ov").classList.remove("show")});
+
+/* ================= MODO DESAPARECER ================= */
+let idleT=null;
+const plBox=document.querySelector(".player");
+function wakePlayer(){
+  plBox.classList.remove("faded");
+  clearTimeout(idleT);
+  idleT=setTimeout(()=>{
+    if(!P.paused&&$("player-ov").classList.contains("show"))plBox.classList.add("faded");
+  },12000);
+}
+plBox.addEventListener("pointerdown",e=>{
+  if(plBox.classList.contains("faded")){e.stopPropagation();e.preventDefault();wakePlayer()}
+},true);
+plBox.addEventListener("pointerdown",()=>{if(!plBox.classList.contains("faded"))wakePlayer()});
+
+/* ================= CARD POSTÁVEL ================= */
+function wrapTxt(x,t,maxW){
+  const words=t.split(" "),lines=[];let l="";
+  words.forEach(w=>{if(x.measureText(l+w).width>maxW&&l){lines.push(l.trim());l=w+" "}else l+=w+" "});
+  if(l.trim())lines.push(l.trim());
+  return lines;
+}
+async function shareCard(e){
+  if((!e.chips||!e.chips.length)&&!e.text){toast("Registro vazio — escreva ou marque sensações");return}
+  try{await Promise.all([
+    document.fonts.load('italic 500 68px Fraunces'),
+    document.fonts.load('500 52px Fraunces'),
+    document.fonts.load('700 30px Karla')])}catch(_){}
+  const W=1080,H=1920,c=document.createElement("canvas");c.width=W;c.height=H;
+  const x=c.getContext("2d");
+  const g=x.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,"#2a4218");g.addColorStop(.55,"#16290a");g.addColorStop(1,"#0C1802");
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  try{x.filter="blur(70px)";
+    [[W*.85,H*.13,170,"rgba(232,248,175,.10)"],[W*.08,H*.5,150,"rgba(63,118,82,.35)"],[W*.75,H*.87,190,"rgba(220,189,87,.10)"]].forEach(([cx,cy,r,col])=>{x.fillStyle=col;x.beginPath();x.arc(cx,cy,r,0,7);x.fill()});
+    x.filter="none";}catch(_){}
+  x.globalAlpha=.05;x.fillStyle="#FFF9EE";
+  for(let i=0;i<1500;i++)x.fillRect(Math.random()*W,Math.random()*H,1.4,1.4);
+  x.globalAlpha=1;
+  const leaf=(cx,cy,s)=>{x.save();x.translate(cx,cy);x.scale(s,s);
+    x.fillStyle="#DCBD57";x.beginPath();x.moveTo(0,20);x.bezierCurveTo(0,2,4,-10,18,-20);x.bezierCurveTo(18,-2,12,12,0,20);x.fill();
+    x.fillStyle="#E8F8AF";x.globalAlpha=.85;x.beginPath();x.moveTo(0,20);x.bezierCurveTo(0,8,-3,-1,-16,-8);x.bezierCurveTo(-14,4,-8,14,0,20);x.fill();x.globalAlpha=1;x.restore()};
+  leaf(W/2,148,2.6);
+  x.textAlign="center";
+  try{x.letterSpacing="10px"}catch(_){}
+  x.fillStyle="#DCBD57";x.font="700 30px Karla,Arial";x.fillText("FLORESTA INTERIOR",W/2,258);
+  try{x.letterSpacing="0px"}catch(_){}
+  const dt=new Date(e.d).toLocaleDateString("pt-BR",{day:"numeric",month:"long",year:"numeric"});
+  x.fillStyle="rgba(255,249,238,.55)";x.font="500 30px Karla,Arial";x.fillText(dt,W/2,310);
+  x.fillStyle="#FFF9EE";x.font="italic 500 68px Fraunces,Georgia";
+  x.fillText("Hoje me conectei com:",W/2,478);
+  let y=596;
+  const items=(e.chips||[]).slice(0,7);
+  x.font="500 52px Fraunces,Georgia";
+  items.forEach(ch=>{
+    const w=x.measureText(ch).width;
+    leaf(W/2-w/2-52,y-14,1.0);
+    x.fillStyle="#FFF9EE";x.fillText(ch,W/2,y);
+    y+=94;
+  });
+  if(e.text){
+    y+=items.length?36:0;
+    x.font="italic 400 40px Fraunces,Georgia";x.fillStyle="rgba(255,249,238,.78)";
+    const lines=wrapTxt(x,"« "+e.text+" »",W-260).slice(0,5);
+    lines.forEach(l=>{x.fillText(l,W/2,y);y+=58});
+  }
+  if(e.mood!==null&&e.mood!==undefined){
+    y+=40;
+    x.font="700 26px Karla,Arial";x.fillStyle="#DCBD57";
+    try{x.letterSpacing="6px"}catch(_){}
+    x.fillText(("estado: "+MOODS[e.mood][0]).toUpperCase(),W/2,y);
+    try{x.letterSpacing="0px"}catch(_){}
+  }
+  x.strokeStyle="rgba(220,189,87,.5)";x.lineWidth=2;
+  x.beginPath();x.moveTo(W/2-70,H-262);x.lineTo(W/2+70,H-262);x.stroke();
+  x.fillStyle="#DCBD57";x.font="700 34px Karla,Arial";
+  try{x.letterSpacing="6px"}catch(_){}
+  x.fillText("@MESTRANATUREZA",W/2,H-198);
+  try{x.letterSpacing="0px"}catch(_){}
+  x.fillStyle="rgba(255,249,238,.45)";x.font="500 26px Karla,Arial";
+  x.fillText("floresta interior · banhos de floresta guiados",W/2,H-150);
+  c.toBlob(async b=>{
+    if(!b){toast("Não consegui gerar o card");return}
+    const f=new File([b],"floresta-interior-card.png",{type:"image/png"});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){
+      try{await navigator.share({files:[f],title:"Floresta Interior"});return}catch(_){}
+    }
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(b);a.download="floresta-interior-card.png";a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    toast("Card salvo — pronto para os stories ✦");
+  },"image/png");
+}
+
 /* ================= SUAVIZAÇÃO: reveal ao rolar ================= */
 const io=("IntersectionObserver" in window)
   ? new IntersectionObserver(es=>es.forEach(e=>{
@@ -1202,9 +1618,9 @@ if(!store.get("welcomed",false))$("welcome").classList.add("show");
 $("enter").addEventListener("click",()=>{
   store.set("welcomed",true);
   $("welcome").classList.remove("show");
-  chime(440);
+  playAmb("abertura",.9);
 });
-renderHoje();renderPraticas();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();observeReveals();
+renderHoje();renderMission();renderPraticas();renderReflex();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();renderTree();observeReveals();
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 </body>

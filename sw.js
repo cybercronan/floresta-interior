@@ -1,4 +1,4 @@
-const CACHE = "floresta-interior-v3";
+const CACHE = "floresta-interior-v4";
 const ASSETS = ["./", "./index.html", "./manifest.json"];
 
 self.addEventListener("install", (e) => {
@@ -16,6 +16,8 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
+  // Áudio: deixar passar direto (range requests p/ seek; episódios grandes não entram no cache)
+  if (e.request.url.includes("/audio/")) return;
   e.respondWith(
     caches.match(e.request).then(
       (hit) =>
