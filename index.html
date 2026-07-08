@@ -25,11 +25,12 @@
   --r:20px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;overscroll-behavior:none}
 body{
   font-family:var(--sans); color:var(--ink); background:var(--night);
   background-image:radial-gradient(120% 90% at 50% -10%, #2a4218 0%, var(--deep) 48%, var(--night) 100%);
   min-height:100vh; display:flex; justify-content:center;
+  overscroll-behavior:none;
 }
 /* raminho aquarelado nas laterais (telas largas), detalhe sutil sobre o verde escuro */
 body::before,body::after{content:"";position:fixed;width:40vmin;height:51vmin;pointer-events:none;opacity:.5;z-index:0;
@@ -43,10 +44,12 @@ body::after{right:-10vmin;top:-8vmin;transform:rotate(188deg)}
   display:flex; flex-direction:column;
 }
 @media(min-width:520px){ #app{margin:20px 0;border-radius:30px;min-height:calc(100vh - 40px);min-height:calc(100dvh - 40px);overflow:hidden} }
+/* no celular: trava a altura na viewport para que a nav fique fixa no rodapé e o main role por dentro */
+@media(max-width:519.98px){ #app{height:100vh;height:100dvh;overflow:hidden} }
 /* paper grain */
 .grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;z-index:1;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .24 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
-main{flex:1;overflow-y:auto;padding:0 22px calc(96px + env(safe-area-inset-bottom));position:relative;z-index:2;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+main{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 22px calc(96px + env(safe-area-inset-bottom));position:relative;z-index:2;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
 
 /* ---------- header ---------- */
 header{position:relative;z-index:2;padding:calc(18px + env(safe-area-inset-top)) 22px 10px;display:flex;align-items:center;justify-content:space-between}
@@ -176,7 +179,8 @@ textarea::placeholder{color:var(--ink-40);font-style:italic}
 .acc .body-in{padding:0 18px 18px;font-size:14px;line-height:1.65;color:rgba(29,14,3,.82)}
 .acc .body-in p+p{margin-top:10px}
 .acc .body-in em{font-family:var(--serif);color:var(--pine)}
-.check{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--ink-08);font-size:14px}
+.check{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 0;border-bottom:1px solid var(--ink-08);font:inherit;font-size:14px;color:inherit;background:none;border-left:none;border-right:none;border-top:none;cursor:pointer}
+.check:focus-visible{outline:2px solid var(--moss);outline-offset:2px;border-radius:6px}
 .check:last-child{border:none}
 .check .box{width:20px;height:20px;flex:none;border:1.5px solid var(--ink-40);border-radius:7px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .check.on .box{background:var(--moss);border-color:var(--moss)}
@@ -284,6 +288,11 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 /* ---------- TOAST ---------- */
 #toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:12px 22px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:90}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ---------- BARRA DESFAZER (remoção do diário) ---------- */
+#undobar{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);display:flex;align-items:center;gap:14px;background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:11px 12px 11px 20px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:95;max-width:calc(100% - 32px)}
+#undobar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+#undobar button{flex:none;background:var(--leaf);color:var(--deep);font-weight:700;font-size:12.5px;letter-spacing:.04em;padding:8px 16px;border-radius:99px}
+#undobar button:active{transform:scale(.96)}
 .card-btn{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.06em;margin-right:10px}
 /* ---------- CONTA / SOBRE ---------- */
 .hbtn{width:34px;height:34px;border-radius:50%;background:var(--paper-2);border:1px solid var(--ink-15);display:flex;align-items:center;justify-content:center;color:var(--ink);flex:none}
@@ -378,10 +387,14 @@ nav{position:absolute;left:0;right:0;bottom:0;z-index:20;display:flex;justify-co
 /* ---------- completion / modals ---------- */
 .modal-bg{position:fixed;inset:0;background:rgba(12,24,2,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:60;display:none;align-items:flex-end;justify-content:center}
 .modal-bg.show{display:flex}
-.modal{width:100%;max-width:460px;background:var(--paper);border-radius:28px 28px 0 0;padding:26px 22px calc(26px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;animation:slideup .45s cubic-bezier(.2,.8,.2,1) both;position:relative}
+.modal{width:100%;max-width:460px;background:var(--paper);border-radius:28px 28px 0 0;padding:26px 22px calc(26px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;overscroll-behavior:contain;animation:slideup .45s cubic-bezier(.2,.8,.2,1) both;position:relative;will-change:transform}
+.modal.dragging{animation:none;transition:none}
+.modal.closing{transition:transform .28s ease,opacity .28s ease}
 @media(min-width:520px){.modal{border-radius:28px;margin-bottom:4vh}}
 @keyframes slideup{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
-.modal .handle{width:44px;height:4px;border-radius:99px;background:var(--ink-15);margin:0 auto 18px}
+.modal .handle{width:44px;height:5px;border-radius:99px;background:var(--ink-15);margin:0 auto 18px;cursor:grab}
+/* área ampliada para o gesto de arrastar o cabeçalho da aba */
+.modal .handle::before{content:"";position:absolute;top:0;left:0;right:0;height:52px}
 .modal h3{font-size:22px;margin-bottom:6px}
 .modal .sub{font-size:13.5px;color:var(--ink-60);line-height:1.5}
 input[type=text]{width:100%;background:var(--paper-2);border:1px solid var(--ink-15);border-radius:14px;padding:13px 16px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);outline:none;margin-top:12px}
@@ -417,8 +430,8 @@ input[type=text]:focus{border-color:var(--moss)}
       <button class="hbtn" id="btn-conta" aria-label="Conta e configurações">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 19.5 C6.5 15.8 9 14 12 14 C15 14 17.5 15.8 19 19.5"/></svg>
       </button>
-      <div class="streak" id="streak" title="Dias de conexão">
-        <svg viewBox="0 0 24 24" fill="#A47F04"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg>
+      <div class="streak" id="streak" title="Pontos de crescimento da sua árvore" aria-label="Pontos de crescimento">
+        <svg viewBox="0 0 24 24" fill="#A47F04" aria-hidden="true"><path d="M12 22 C12 13 14 7 21 2 C21 11 18 18 12 22 Z"/><path d="M12 22 C12 16 10.5 11.5 4 8 C4.8 15 8 20 12 22 Z" opacity=".55"/></svg>
         <span id="streak-n">0</span>
       </div>
     </div>
@@ -657,7 +670,7 @@ input[type=text]:focus{border-color:var(--moss)}
     <h3 id="a-title" style="padding-right:20px"></h3>
     <p class="sub" style="margin-top:6px">Para ouvir no caminho, na varanda, de olhos fechados, plantando a próxima imersão.</p>
     <div class="aplayer">
-      <button class="a-btn" id="a-play" aria-label="Tocar ou pausar">
+      <button class="a-btn" id="a-play" aria-label="Tocar">
         <svg id="a-ic" viewBox="0 0 24 24"><path d="M7 4.5 L19 12 L7 19.5 Z"/></svg>
       </button>
       <div class="a-track">
@@ -670,6 +683,7 @@ input[type=text]:focus{border-color:var(--moss)}
   </div>
 </div>
 <div id="toast"></div>
+<div id="undobar"><span id="undobar-t">Registro removido</span><button type="button" id="undobar-btn">Desfazer</button></div>
 
 <!-- ============ BANHO SOB MEDIDA ============ -->
 <div class="modal-bg" id="build-ov">
@@ -1108,7 +1122,7 @@ function renderHoje(){
   $("j-num").textContent=Math.min(done+1,21);
   $("j-label").textContent=" · "+WEEKS[Math.min(Math.floor(Math.min(done,20)/7),2)][0];
   $("j-bar").style.width=(done/21*100)+"%";
-  $("streak-n").textContent=streak.count;
+  $("streak-n").textContent=growthPts();
   $("jstate").onclick=()=>goto("jornada");
 }
 $("tile-breath").addEventListener("click",()=>openPractice({id:"resp",icon:"limiar",title:"Respiração 4x4",sub:"Aterramento",sense:"corpo",min:2,steps:[
@@ -1152,6 +1166,9 @@ function openPractice(p){
   $("pl-leaves").innerHTML=[...Array(7)].map((_,i)=>`<i style="left:${8+i*13}%;animation-duration:${13+(i*2.7)%9}s;animation-delay:${-i*3.1}s"></i>`).join("");
   $("player-ov").classList.add("show");
   document.body.style.overflow="hidden";
+  $("pl-play").setAttribute("aria-label","Pausar");
+  $("pl-mute").setAttribute("aria-label",muted?"Ativar som":"Silenciar som");
+  $("pl-mute").setAttribute("aria-pressed",muted?"true":"false");
   showStep();startTimer();playAmb("folhas",.5);wakePlayer();
 }
 function showStep(){
@@ -1209,11 +1226,14 @@ $("pl-count").addEventListener("click",()=>{P.count++;$("pl-count-n").textConten
 $("pl-play").addEventListener("click",()=>{
   P.paused=!P.paused;
   $("ic-pp").innerHTML=P.paused?'<path d="M7 4.5 L19 12 L7 19.5 Z"/>':'<rect x="6.5" y="5" width="4" height="14" rx="1.4"/><rect x="13.5" y="5" width="4" height="14" rx="1.4"/>';
+  $("pl-play").setAttribute("aria-label",P.paused?"Retomar":"Pausar");
   $("ring-wrap").style.animationPlayState=P.paused?"paused":"running";
 });
 $("pl-mute").addEventListener("click",()=>{
   muted=!muted;store.set("muted",muted);
   $("ic-sound").innerHTML=muted?'<path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/><path d="M16 9 l5 6 M21 9 l-5 6"/>':'<path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/><path d="M16.5 8.5 a5 5 0 0 1 0 7"/>';
+  $("pl-mute").setAttribute("aria-label",muted?"Ativar som":"Silenciar som");
+  $("pl-mute").setAttribute("aria-pressed",muted?"true":"false");
 });
 
 /* ================= COMPLETION ================= */
@@ -1331,11 +1351,29 @@ function renderEntries(){
       ${e.text?`<p>${e.text.replace(/</g,"&lt;")}</p>`:""}
       ${e.chips&&e.chips.length?`<div class="echips">${e.chips.map(c=>`<i>${c}</i>`).join("")}</div>`:""}
     </div>`}).join("");
-  document.querySelectorAll(".entry .del").forEach(b=>b.addEventListener("click",()=>{
-    journal.splice(+b.dataset.i,1);store.set("journal",journal);renderEntries();renderTree();
-  }));
+  document.querySelectorAll(".entry .del").forEach(b=>b.addEventListener("click",()=>removeEntry(+b.dataset.i)));
   document.querySelectorAll(".entry .card-btn").forEach(b=>b.addEventListener("click",()=>shareCard(journal[+b.dataset.c])));
 }
+/* remoção com desfazer: guarda a folha por alguns segundos antes de soltá-la de vez */
+let undoData=null,undoT=null;
+function removeEntry(i){
+  if(i<0||i>=journal.length)return;
+  const [entry]=journal.splice(i,1);
+  store.set("journal",journal);renderEntries();renderTree();
+  undoData={entry,i};
+  $("undobar-t").textContent="Registro removido";
+  $("undobar").classList.add("show");
+  clearTimeout(undoT);
+  undoT=setTimeout(()=>{$("undobar").classList.remove("show");undoData=null},5000);
+}
+$("undobar-btn").addEventListener("click",()=>{
+  if(!undoData)return;
+  journal.splice(Math.min(undoData.i,journal.length),0,undoData.entry);
+  store.set("journal",journal);renderEntries();renderTree();
+  undoData=null;clearTimeout(undoT);
+  $("undobar").classList.remove("show");
+  toast("Registro restaurado 🌿");
+});
 
 /* ================= SABER ================= */
 function renderSaber(){
@@ -1347,7 +1385,7 @@ function renderSaber(){
        <svg class="ar" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
      </button>
      <div class="body"><div class="body-in">${s.check?s.check.map((c,ci)=>`
-        <div class="check" data-c="${ci}"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF9EE" stroke-width="3.5" stroke-linecap="round"><path d="M4 12.5 L10 18 L20 6.5"/></svg></span>${c}</div>`).join(""):s.b}</div></div>
+        <button type="button" class="check" data-c="${ci}" role="checkbox" aria-checked="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF9EE" stroke-width="3.5" stroke-linecap="round"><path d="M4 12.5 L10 18 L20 6.5"/></svg></span>${c}</button>`).join(""):s.b}</div></div>
    </div>`).join("");
   document.querySelectorAll(".acc>button").forEach(b=>b.addEventListener("click",()=>{
     const acc=b.parentElement;
@@ -1360,7 +1398,10 @@ function renderSaber(){
       }
     }
   }));
-  document.querySelectorAll(".check").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("on")));
+  document.querySelectorAll(".check").forEach(c=>c.addEventListener("click",()=>{
+    const on=c.classList.toggle("on");
+    c.setAttribute("aria-checked",on?"true":"false");
+  }));
 }
 
 /* ================= BANHO SOB MEDIDA ================= */
@@ -1540,6 +1581,7 @@ function treeSVG(st){
 }
 function renderTree(){
   const p=growthPts(),st=treeStage(p);
+  $("streak-n").textContent=p;
   $("tree-svg").innerHTML=treeSVG(st);
   $("tree-stage").textContent=TREE[st].n;
   $("tree-sub").textContent=TREE[st].s;
@@ -1584,7 +1626,7 @@ $("v-close").addEventListener("click",()=>{$("video-ov").classList.remove("show"
 const aud=new Audio();aud.preload="metadata";
 let curEp=null,seekDrag=false,aposT=0,pendingSeek=0;
 function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}
-function setPlayIcon(pl){$("a-ic").innerHTML=pl?'<rect x="6" y="5" width="4.4" height="14" rx="1.4"/><rect x="13.6" y="5" width="4.4" height="14" rx="1.4"/>':'<path d="M8.5 5 L18.5 12 L8.5 19 Z"/>'}
+function setPlayIcon(pl){$("a-ic").innerHTML=pl?'<rect x="6" y="5" width="4.4" height="14" rx="1.4"/><rect x="13.6" y="5" width="4.4" height="14" rx="1.4"/>':'<path d="M8.5 5 L18.5 12 L8.5 19 Z"/>';$("a-play").setAttribute("aria-label",pl?"Pausar":"Tocar")}
 function saveApos(){if(curEp&&aud.currentTime>0){apos[curEp.id]=aud.currentTime;store.set("apos",apos)}}
 function openAudio(r){
   curEp=r;
@@ -1876,7 +1918,7 @@ function sobreHTML(){
   return `
   <div class="glabel" style="margin-top:22px">Sobre o app</div>
   <div class="ct-row"><span><b>Floresta Interior</b><span class="sub2">Versão ${APP_VERSION} · banhos de floresta guiados</span></span></div>
-  <div class="ct-row"><span><b>Criado por</b><span class="sub2">Instituto Mestra Natureza, com conteúdo do curso Banhos de Floresta e do nosso Guia Prático (ebook). Desenvolvido por cybercronan.</span></span></div>
+  <div class="ct-row"><span><b>Criado por</b><span class="sub2">Instituto Mestra Natureza, com conteúdo da nossa <a href="https://banhodefloresta.mestranatureza.com/" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700">Formação em Banhos de Floresta</a>. Desenvolvido por cybercronan.</span></span></div>
   <div class="ct-row"><span><b>A Mestra Natureza</b><span class="sub2">Instituto de ensino e pesquisa em Ecopsicologia, Ecofilosofia e saberes da Natureza. Siga <a href="https://www.instagram.com/mestranatureza" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700">@mestranatureza</a>.</span></span></div>
   <div class="ct-row" style="display:block">
     <b>Apoie nosso trabalho</b>
@@ -1963,6 +2005,45 @@ function renderConta(){
 $("btn-conta").addEventListener("click",()=>{renderConta();$("conta-ov").classList.add("show")});
 window.addEventListener("load",sbInit);
 
+/* ================= ABAS INFERIORES: arrastar p/ fechar + tocar fora ================= */
+function closeSheet(bg){
+  const sheet=bg.querySelector(".modal");
+  if(bg.id==="audio-ov"){try{aud.pause();saveApos()}catch(e){}setPlayIcon(false)}
+  if(bg.id==="video-ov"){const h=$("v-holder");if(h)h.innerHTML=""}
+  bg.classList.remove("show");
+  if(sheet){sheet.classList.remove("dragging","closing");sheet.style.transform="";sheet.style.opacity=""}
+}
+function enableSheetDrag(bg){
+  const sheet=bg.querySelector(".modal");
+  if(!sheet)return;
+  let startY=0,dy=0,active=false;
+  sheet.addEventListener("touchstart",e=>{
+    if(e.touches.length!==1||sheet.scrollTop>2){active=false;return}
+    active=true;startY=e.touches[0].clientY;dy=0;
+    sheet.classList.add("dragging");
+  },{passive:true});
+  sheet.addEventListener("touchmove",e=>{
+    if(!active)return;
+    dy=e.touches[0].clientY-startY;
+    if(dy<0){active=false;sheet.classList.remove("dragging");sheet.style.transform="";sheet.style.opacity="";return}
+    sheet.style.transform="translateY("+dy+"px)";
+    sheet.style.opacity=String(Math.max(.4,1-dy/520));
+  },{passive:true});
+  sheet.addEventListener("touchend",()=>{
+    if(!active)return;
+    active=false;sheet.classList.remove("dragging");sheet.classList.add("closing");
+    if(dy>120){
+      sheet.style.transform="translateY(110%)";sheet.style.opacity="0";
+      setTimeout(()=>closeSheet(bg),260);
+    }else{
+      sheet.style.transform="";sheet.style.opacity="";
+      setTimeout(()=>sheet.classList.remove("closing"),260);
+    }
+  });
+  bg.addEventListener("click",e=>{if(e.target===bg)closeSheet(bg)});
+}
+document.querySelectorAll(".modal-bg").forEach(enableSheetDrag);
+
 /* ================= SUAVIZAÇÃO: reveal ao rolar ================= */
 const io=("IntersectionObserver" in window)
   ? new IntersectionObserver(es=>es.forEach(e=>{
@@ -1989,7 +2070,7 @@ $("enter").addEventListener("click",()=>{
   ambDone=true;playAmb("abertura",.65);
 });
 renderHoje();renderMission();renderPraticas();renderReflex();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();renderTree();observeReveals();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=6",{updateViaCache:"none"}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{}))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=8",{updateViaCache:"none"}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{}))}
 </script>
 </body>
 </html>

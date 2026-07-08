@@ -1,5 +1,15 @@
-const CACHE = "floresta-interior-v6";
-const ASSETS = ["./", "./index.html", "./manifest.json"];
+const CACHE = "floresta-interior-v8";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./img/leaf-single.webp",
+  "./img/leaf-sprig.webp",
+  "./img/icon-192.png",
+  "./img/icon-512.png",
+  "./img/icon-maskable-192.png",
+  "./img/icon-maskable-512.png",
+];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
