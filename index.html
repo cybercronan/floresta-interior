@@ -1076,11 +1076,14 @@ function toast(msg){
 }
 
 /* ================= NAV ================= */
+let curTab="hoje";
 document.querySelectorAll(".nbtn").forEach(b=>b.addEventListener("click",()=>{
   document.querySelectorAll(".nbtn").forEach(x=>x.classList.toggle("active",x===b));
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   $("v-"+b.dataset.v).classList.add("active");
   $("main").scrollTo({top:0});
+  const to=b.dataset.v;
+  if(to!==curTab){if(typeof logEvent==="function")logEvent("nav:"+to,{from:curTab});curTab=to;}
 }));
 function goto(v){document.querySelector(`.nbtn[data-v="${v}"]`).click()}
 
@@ -1142,6 +1145,7 @@ function renderPraticas(){
 const CIRC=339.29;
 let P={p:null,i:0,left:0,total:0,timer:null,paused:false};
 function openPractice(p){
+  if(typeof logEvent==="function")logEvent("practice_start",{id:p.id,title:p.title,min:p.min,sense:p.sense});
   P={p,i:0,left:p.steps[0].s,total:p.steps[0].s,timer:null,paused:false,count:0};
   $("pl-name").textContent=p.title;
   $("pl-dots").innerHTML=p.steps.map((_,i)=>`<i${i===0?' class="on"':''}></i>`).join("");
@@ -1307,6 +1311,7 @@ $("j-save").addEventListener("click",()=>{
   if(!t&&selMood===null&&!selChips.size)return;
   journal.unshift({d:new Date().toISOString(),mood:selMood,chips:[...selChips],text:t});
   store.set("journal",journal);
+  if(typeof logEvent==="function")logEvent("journal_save",{mood:selMood,chips:[...selChips].length,chars:t.length,total:journal.length});
   $("j-text").value="";selChips=new Set();selMood=null;
   renderDiaryForm();renderEntries();renderTree();chime(587.33);
   $("main").scrollTo({top:$("entries").offsetTop-90,behavior:"smooth"});
@@ -1714,7 +1719,7 @@ async function shareCard(e){
 }
 
 /* ================= CONTA · SINCRONIZAÇÃO · SOBRE ================= */
-const APP_VERSION="1.0 (v5)";
+const APP_VERSION="1.0 (v6)";
 const PIX_KEY="mestranatureza@gmail.com";
 const SB_URL="https://tvpsvvatjlmglomnmzqs.supabase.co";
 const SB_KEY="sb_publishable_YvqT__5id1b0LH2NqxvzKw_K6m-WNio";
@@ -1756,6 +1761,59 @@ async function pullProgress(){
     else pushProgress();
   }catch(e){}
 }
+/* id anônimo e estável deste aparelho — para contar quem testa sem logar */
+function anonId(){
+  let id=null;
+  try{id=localStorage.getItem("fi_anon_id")}catch(e){}
+  if(!id){
+    id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():("a-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2));
+    try{localStorage.setItem("fi_anon_id",id)}catch(e){}
+  }
+  return id;
+}
+/* id de sessão (só em memória): agrupa os eventos de uma mesma visita */
+const SESSION_ID=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():("s-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2));
+/* contexto do aparelho — útil na fase de testes p/ entender de onde vêm os acessos */
+function deviceCtx(){
+  try{
+    const nav=window.navigator||{};
+    return{
+      sid:SESSION_ID,
+      ver:APP_VERSION,
+      standalone:(window.matchMedia&&window.matchMedia("(display-mode:standalone)").matches)||nav.standalone===true,
+      lang:nav.language||null,
+      platform:nav.platform||null,
+      screen:(window.screen?screen.width+"x"+screen.height:null),
+      viewport:innerWidth+"x"+innerHeight,
+      dpr:window.devicePixelRatio||1,
+      tz:(Intl&&Intl.DateTimeFormat().resolvedOptions().timeZone)||null,
+      referrer:document.referrer||null,
+      ua:nav.userAgent||null
+    };
+  }catch(e){return{sid:SESSION_ID}}
+}
+/* registra um evento de uso (funciona mesmo sem conta) */
+async function logEvent(page,extra){
+  if(!sb)return;
+  try{
+    const meta=Object.assign({sid:SESSION_ID},extra||{});
+    await sb.from("app_usage").insert({
+      anonymous_id:anonId(),
+      user_id:(sbUser&&sbUser.id)||null,
+      page:page||"event",
+      meta
+    });
+  }catch(e){}
+}
+/* a abertura do app carrega o contexto completo do aparelho; roda só uma vez */
+let openLogged=false;
+function logOpen(){
+  if(openLogged)return;
+  openLogged=true;
+  const first=!localStorage.getItem("fi_seen");
+  try{localStorage.setItem("fi_seen","1")}catch(e){}
+  logEvent("app_open",Object.assign({first_visit:first},deviceCtx()));
+}
 function sbInit(){
   if(SB_URL.indexOf("http")!==0||!window.supabase)return;
   try{
@@ -1765,6 +1823,7 @@ function sbInit(){
       renderConta();
       if(ev==="SIGNED_IN")pullProgress();
     });
+    logOpen();
   }catch(e){}
 }
 function ctErr(m){const el=$("ct-err");if(el)el.textContent=m||""}
@@ -1783,10 +1842,10 @@ async function doSignup(){
   if(!e||p.length<6){ctErr("Preencha o e-mail e uma senha de 6+ caracteres.");return}
   const {data,error}=await sb.auth.signUp({email:e,password:p,options:{data:{name:n}}});
   if(error){ctErr(traduzErr(error));return}
-  if(data.session){toast("Conta criada! Bem-vinda/o 🌿");return}
+  if(data.session){if(typeof logEvent==="function")logEvent("signup");toast("Conta criada! Bem-vinda/o 🌿");return}
   // cadastro instantâneo: entra direto após criar a conta
   const {error:e2}=await sb.auth.signInWithPassword({email:e,password:p});
-  if(!e2){toast("Conta criada! Bem-vinda/o 🌿");return}
+  if(!e2){if(typeof logEvent==="function")logEvent("signup");toast("Conta criada! Bem-vinda/o 🌿");return}
   // fallback (se algum dia a confirmação por e-mail voltar a ser exigida)
   ctMode="login";renderConta();ctErr("Quase lá: confirme o link que enviamos ao seu e-mail e então entre.");
 }
@@ -1795,7 +1854,7 @@ async function doLogin(){
   const e=$("ct-email").value.trim(),p=$("ct-pass").value;
   if(!e||!p){ctErr("Preencha e-mail e senha.");return}
   const {error}=await sb.auth.signInWithPassword({email:e,password:p});
-  if(error)ctErr(traduzErr(error));else toast("Bem-vinda/o de volta 🌿");
+  if(error)ctErr(traduzErr(error));else{if(typeof logEvent==="function")logEvent("login");toast("Bem-vinda/o de volta 🌿");}
 }
 async function doLogout(){await sb.auth.signOut();toast("Você saiu. Seus dados continuam neste aparelho.")}
 function prefsHTML(){
@@ -1926,10 +1985,11 @@ if(!store.get("welcomed",false))$("welcome").classList.add("show");
 $("enter").addEventListener("click",()=>{
   store.set("welcomed",true);
   $("welcome").classList.remove("show");
+  if(typeof logEvent==="function")logEvent("welcome_enter");
   ambDone=true;playAmb("abertura",.65);
 });
 renderHoje();renderMission();renderPraticas();renderReflex();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();renderTree();observeReveals();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=5",{updateViaCache:"none"}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{}))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=6",{updateViaCache:"none"}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{}))}
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const CACHE = "floresta-interior-v5";
+const CACHE = "floresta-interior-v6";
 const ASSETS = ["./", "./index.html", "./manifest.json"];
 
 self.addEventListener("install", (e) => {
