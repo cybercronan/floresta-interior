@@ -29,7 +29,7 @@ Ou simplesmente abra o `index.html` no navegador.
 
 ## Conteúdo
 
-Os textos, práticas e meditações são baseados no **Guia Prático para Banhos Florestais** e no curso **Banhos de Floresta — teoria e prática para uma vida plena**, de Mestra Natureza.
+Os textos, práticas e meditações são baseados no **Guia Prático para Banhos Florestais** e no curso **Banhos de Floresta — teoria e prática para uma vida plena** (disponível em: [https://banhodefloresta.mestranatureza.com/], de Mestra Natureza.
 
 © Instituto Mestra Natureza — todos os direitos reservados sobre os textos e conteúdos das práticas. O código está disponível para estudo.
 
