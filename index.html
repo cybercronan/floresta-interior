@@ -288,11 +288,12 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 /* ---------- TOAST ---------- */
 #toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:12px 22px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:90}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-/* ---------- BARRA DESFAZER (remoção do diário) ---------- */
-#undobar{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);display:flex;align-items:center;gap:14px;background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:11px 12px 11px 20px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:95;max-width:calc(100% - 32px)}
-#undobar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
-#undobar button{flex:none;background:var(--leaf);color:var(--deep);font-weight:700;font-size:12.5px;letter-spacing:.04em;padding:8px 16px;border-radius:99px}
-#undobar button:active{transform:scale(.96)}
+/* ---------- BARRAS DESFAZER / ATUALIZAR ---------- */
+#undobar,#updbar{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);display:flex;align-items:center;gap:14px;background:var(--pine);color:var(--leaf);font-size:13px;font-weight:700;padding:11px 12px 11px 20px;border-radius:99px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,.7,.2,1);z-index:95;max-width:calc(100% - 32px)}
+#undobar.show,#updbar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+#undobar button,#updbar button{flex:none;background:var(--leaf);color:var(--deep);font-weight:700;font-size:12.5px;letter-spacing:.04em;padding:8px 16px;border-radius:99px}
+#undobar button:active,#updbar button:active{transform:scale(.96)}
+#updbar{bottom:160px}
 .card-btn{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.06em;margin-right:10px}
 /* ---------- CONTA / SOBRE ---------- */
 .hbtn{width:34px;height:34px;border-radius:50%;background:var(--paper-2);border:1px solid var(--ink-15);display:flex;align-items:center;justify-content:center;color:var(--ink);flex:none}
@@ -684,6 +685,7 @@ input[type=text]:focus{border-color:var(--moss)}
 </div>
 <div id="toast"></div>
 <div id="undobar"><span id="undobar-t">Registro removido</span><button type="button" id="undobar-btn">Desfazer</button></div>
+<div id="updbar"><span>Nova versão disponível 🌱</span><button type="button" id="updbar-btn">Atualizar</button></div>
 
 <!-- ============ BANHO SOB MEDIDA ============ -->
 <div class="modal-bg" id="build-ov">
@@ -1761,7 +1763,7 @@ async function shareCard(e){
 }
 
 /* ================= CONTA · SINCRONIZAÇÃO · SOBRE ================= */
-const APP_VERSION="1.0 (v6)";
+const APP_VERSION="1.0 (v10)";
 const PIX_KEY="mestranatureza@gmail.com";
 const SB_URL="https://tvpsvvatjlmglomnmzqs.supabase.co";
 const SB_KEY="sb_publishable_YvqT__5id1b0LH2NqxvzKw_K6m-WNio";
@@ -2018,10 +2020,11 @@ function enableSheetDrag(bg){
   if(!sheet)return;
   const ENGAGE=10; // só vira "arrasto" após um movimento vertical claro; toques passam como clique
   let startY=0,startX=0,move=0,pending=false,engaged=false;
+  const resetDrag=()=>{pending=false;engaged=false;sheet.classList.remove("dragging","closing");sheet.style.transform="";sheet.style.opacity=""};
   sheet.addEventListener("touchstart",e=>{
-    engaged=false;
-    if(e.touches.length!==1||sheet.scrollTop>2){pending=false;return}
-    pending=true;move=0;
+    // multi-toque, conteúdo rolado ou toque num slider: não é gesto de fechar
+    if(e.touches.length!==1||sheet.scrollTop>2||(e.target.closest&&e.target.closest("input[type=range]"))){resetDrag();return}
+    pending=true;engaged=false;move=0;
     startY=e.touches[0].clientY;startX=e.touches[0].clientX;
   },{passive:true});
   sheet.addEventListener("touchmove",e=>{
@@ -2030,9 +2033,9 @@ function enableSheetDrag(bg){
     if(!engaged){
       if(Math.abs(dx)>Math.abs(dy)){pending=false;return} // gesto horizontal: não é fechar
       if(dy<ENGAGE)return;                                 // ainda não passou do limiar (inclui toque/scroll p/ cima)
-      engaged=true;sheet.classList.add("dragging");
+      engaged=true;sheet.classList.remove("closing");sheet.classList.add("dragging");
     }
-    move=Math.max(0,e.touches[0].clientY-startY-ENGAGE);
+    move=Math.max(0,dy-ENGAGE);
     sheet.style.transform="translateY("+move+"px)";
     sheet.style.opacity=String(Math.max(.4,1-move/520));
   },{passive:true});
@@ -2049,6 +2052,7 @@ function enableSheetDrag(bg){
       setTimeout(()=>sheet.classList.remove("closing"),260);
     }
   });
+  sheet.addEventListener("touchcancel",resetDrag); // navegador interrompeu o toque: nunca deixar a aba presa
   bg.addEventListener("click",e=>{if(e.target===bg)closeSheet(bg)});
 }
 document.querySelectorAll(".modal-bg").forEach(enableSheetDrag);
@@ -2062,9 +2066,12 @@ const io=("IntersectionObserver" in window)
 function observeReveals(){
   if(!io)return;
   document.querySelectorAll(".pcard,.acc,.entry,.week,.glabel,.radar-card").forEach(el=>{
-    if(!el.classList.contains("reveal")&&!el.classList.contains("in")){
-      el.classList.add("reveal");io.observe(el);
-    }
+    if(el.classList.contains("reveal")||el.classList.contains("in"))return;
+    const r=el.getBoundingClientRect();
+    // já visível na tela (re-render após uma ação): entra direto, sem piscar;
+    // oculto ou abaixo da dobra: ganha a animação de revelar ao rolar
+    if(el.offsetParent!==null&&r.top<innerHeight&&r.bottom>0){el.classList.add("in")}
+    else{el.classList.add("reveal");io.observe(el)}
   });
 }
 new MutationObserver(()=>requestAnimationFrame(observeReveals))
@@ -2079,7 +2086,18 @@ $("enter").addEventListener("click",()=>{
   ambDone=true;playAmb("abertura",.65);
 });
 renderHoje();renderMission();renderPraticas();renderReflex();renderJourney();renderDiaryForm();renderEntries();renderSaber();renderRadar();renderTree();observeReveals();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=9",{updateViaCache:"none"}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{}))}
+if("serviceWorker" in navigator){
+  const hadController=!!navigator.serviceWorker.controller;
+  let swReg=null;
+  window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=10",{updateViaCache:"none"}).then(r=>{swReg=r;try{r.update()}catch(e){}}).catch(()=>{}));
+  // ao voltar ao app, procura versão nova (substitui o "puxar para atualizar", desativado de propósito)
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&swReg){try{swReg.update()}catch(e){}}});
+  // quando uma versão nova assume, oferece recarregar — sem interromper quem está no meio de uma prática
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{
+    if(hadController)$("updbar").classList.add("show");
+  });
+  $("updbar-btn").addEventListener("click",()=>location.reload());
+}
 </script>
 </body>
 </html>
