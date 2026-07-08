@@ -34,5 +34,3 @@ Os textos, práticas e meditações são baseados no **Guia Prático para Banhos
 © Instituto Mestra Natureza — todos os direitos reservados sobre os textos e conteúdos das práticas. O código está disponível para estudo.
 
 ---
-
-🤖 Construído com [Claude Code](https://claude.com/claude-code)
