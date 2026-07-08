@@ -4,6 +4,19 @@
 
 > *"Aqui, agora, você também é floresta."*
 
+--- 
+
+Nasce o Floresta Interior: um app para reaprender a estar na natureza, mesmo quando a vida parece corrida demais.
+  
+Criado pela Mestra Natureza, o Floresta Interior reúne banhos de floresta guiados, uma jornada de 21 dias, práticas sensoriais, respiração, diário da natureza e um radar de conexão para acompanhar sua relação com o mundo vivo.
+  
+Você não precisa ir longe. Uma praça, um quintal, uma árvore na rua ou uma janela com céu já podem ser começo. O app conduz pequenos rituais de presença: olhar com mais calma, ouvir em camadas, sentir o cheiro da terra, tocar o mundo com respeito e encerrar cada encontro com gratidão.
+  
+Mais do que uma ferramenta, o Floresta Interior é um convite: diminuir o passo, deixar a paisagem tocar o corpo e transformar contato com a natureza em prática cotidiana.
+Disponível como PWA, ele pode ser aberto no navegador e instalado no celular. Leve para o parque, para a praça, para o caminho de volta para casa. A floresta começa onde a atenção pousa.
+
+---
+
 ## O que o app faz
 
 - **Banho Sob Medida** - monte seu banho de floresta pelo tempo que você tem (mínimo 10 min, recomendado 25+), escolhendo quais sentidos despertar
