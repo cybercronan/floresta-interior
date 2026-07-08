@@ -1,4 +1,4 @@
-const CACHE = "floresta-interior-v8";
+const CACHE = "floresta-interior-v9";
 const ASSETS = [
   "./",
   "./index.html",
