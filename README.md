@@ -4,6 +4,8 @@
 
 Floresta Interior é uma aplicação web instalável criada para o Instituto [Mestra Natureza](https://www.instagram.com/mestranatureza). O projeto leva práticas de reconexão com a natureza para uma experiência pensada desde o início para o celular.
 
+**Acesso:** [cybercronan.github.io/floresta-interior](https://cybercronan.github.io/floresta-interior/)
+
 > Aqui, agora, você também é floresta.
 
 ## O projeto
