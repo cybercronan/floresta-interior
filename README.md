@@ -1,49 +1,58 @@
-# Floresta Interior 🌿
+# Floresta Interior
 
-**Banhos de floresta guiados, no seu bolso.** Um app-web (PWA) do Instituto [Mestra Natureza](https://www.instagram.com/mestranatureza) - ensino e pesquisa em Ecopsicologia, Ecofilosofia e saberes da Natureza.
+**Banhos de floresta guiados, no seu bolso.**
 
-> *"Aqui, agora, você também é floresta."*
+Floresta Interior é uma aplicação web instalável criada para o Instituto [Mestra Natureza](https://www.instagram.com/mestranatureza). O projeto leva práticas de reconexão com a natureza para uma experiência pensada desde o início para o celular.
 
---- 
+> Aqui, agora, você também é floresta.
 
-Nasce o Floresta Interior: um app para reaprender a estar na natureza, mesmo quando a vida parece corrida demais.
-  
-Criado pela Mestra Natureza, o Floresta Interior reúne banhos de floresta guiados, uma jornada de 21 dias, práticas sensoriais, respiração, diário da natureza e um radar de conexão para acompanhar sua relação com o mundo vivo.
-  
-Você não precisa ir longe. Uma praça, um quintal, uma árvore na rua ou uma janela com céu já podem ser começo. O app conduz pequenos rituais de presença: olhar com mais calma, ouvir em camadas, sentir o cheiro da terra, tocar o mundo com respeito e encerrar cada encontro com gratidão.
-  
-Mais do que uma ferramenta, o Floresta Interior é um convite: diminuir o passo, deixar a paisagem tocar o corpo e transformar contato com a natureza em prática cotidiana.
-Disponível como PWA, ele pode ser aberto no navegador e instalado no celular. Leve para o parque, para a praça, para o caminho de volta para casa. A floresta começa onde a atenção pousa.
+## O projeto
 
----
+O app propõe práticas curtas que podem ser realizadas em uma praça, um quintal, uma rua arborizada ou diante de uma janela. A interface procura reduzir distrações e conduzir cada atividade com instruções claras, ritmo e continuidade.
 
-## O que o app faz
+## Recursos
 
-- **Banho Sob Medida** - monte seu banho de floresta pelo tempo que você tem (mínimo 10 min, recomendado 25+), escolhendo quais sentidos despertar
-- **8 banhos guiados** - travessia de chegada, visão, audição, olfato, tato, meditação da árvore, círculo de gratidão e o jogo "Quantos Pássaros?"
-- **4 Meditações da Mestra** - A Semente, O Coração da Terra, Sons e Silêncios, A Memória Perfumada
-- **Jornada de 21 dias** - micro-práticas diárias de reconexão em 3 semanas
-- **Diário da Natureza** - registro de sensações com o "vocabulário das sensações"
-- **Radar da Conexão** - autoavaliação em 6 eixos (Presença, Sentidos, Entrega, Conexão, Respeito, Gratidão) com dicas para aprofundar cada encontro
-- **Saber** - a ciência dos banhos de floresta: cortisol, células NK, fitoncidas, fascinação suave
+* Banho Sob Medida, organizado pelo tempo disponível e pelos sentidos que a pessoa deseja despertar
+* 8 banhos guiados, incluindo práticas de visão, audição, olfato, tato, meditação e gratidão
+* 4 meditações da Mestra
+* jornada de 21 dias com práticas diárias
+* diário da natureza com vocabulário de sensações
+* Radar da Conexão com autoavaliação em 6 eixos
+* conteúdo sobre a ciência e os fundamentos dos banhos de floresta
+* instalação na tela inicial como PWA
+* suporte a funcionamento offline por service worker
 
-## Tecnologia
+## Decisões de produto e interface
 
-HTML + CSS + JavaScript puros, em um único arquivo. Sem frameworks, sem build, sem dependências. Funciona offline (service worker) e pode ser instalado na tela inicial (PWA). Todos os dados ficam no aparelho da pessoa (localStorage). Nenhum dado é enviado a servidores.
+* experiência mobile first, com navegação inferior e áreas de toque adequadas
+* suporte a áreas seguras de tela em dispositivos móveis
+* controles com rótulos acessíveis e navegação por teclado
+* persistência do progresso no navegador
+* manifest e ícones próprios para instalação
+* imagens otimizadas e recursos essenciais mantidos em cache
 
-## Rodar localmente
+## Dados
+
+Os registros locais da experiência são mantidos no navegador com `localStorage`. O front-end também prevê recursos conectados ao Supabase, cuja disponibilidade depende da configuração do ambiente de publicação.
+
+## Tecnologias
+
+HTML, CSS e JavaScript, com manifest de PWA, service worker e cliente Supabase. A interface não exige framework nem processo de build.
+
+## Executar localmente
 
 ```bash
 python -m http.server 4173
-# abra http://localhost:4173
 ```
 
-Ou simplesmente abra o `index.html` no navegador.
+Depois, abra `http://localhost:4173`.
 
-## Conteúdo
+## Status
 
-Os textos, práticas e meditações são baseados no **Guia Prático para Banhos Florestais** e no curso [Banhos de Floresta: teoria e prática para uma vida plena](https://banhodefloresta.mestranatureza.com/), de Mestra Natureza.
+Projeto em testes e evolução contínua, com atenção especial ao comportamento em celulares e à experiência de instalação.
 
-© Instituto Mestra Natureza - todos os direitos reservados sobre os textos e conteúdos das práticas. O código está disponível para estudo.
+## Conteúdo e direitos
 
----
+Os textos, práticas e meditações têm como base o **Guia Prático para Banhos Florestais** e o curso [Banhos de Floresta: teoria e prática para uma vida plena](https://banhodefloresta.mestranatureza.com/), do Instituto Mestra Natureza.
+
+Textos, áudios, imagens e materiais das práticas têm seus direitos reservados. O código está disponível para consulta e estudo.
